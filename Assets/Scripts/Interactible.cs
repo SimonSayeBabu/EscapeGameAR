@@ -4,7 +4,7 @@ using UnityEngine;
 
 public interface Interactible
 {
-    void Interact();
+    void Interact(Inventory playerInventory = null);
 
-    void LongInteract();
+    void LongInteract(Inventory playerInventory = null);
 }
