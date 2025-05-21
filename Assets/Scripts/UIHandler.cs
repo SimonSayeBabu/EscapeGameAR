@@ -19,6 +19,7 @@ public class UIHandler : MonoBehaviour
     public GameObject TestCollectible;
     public GameObject Cauldron;
     public GameObject TutoDesk ;
+    public GameObject Valve1;
 
 
     public int showUI = -1;
@@ -87,6 +88,11 @@ public class UIHandler : MonoBehaviour
     public void ButtonCollectibleClick()
     {
         controller.PlacedPrefab = TestCollectible;
+    }
+
+    public void ButtonValveClick()
+    {
+        controller.PlacedPrefab = Valve1;
     }
 
     public void ShowUI()
