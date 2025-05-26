@@ -2,18 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Valve1 : MonoBehaviour, Interactible
+public class Valve2 : MonoBehaviour, Interactible
 {
     EnigmeValve enigmeValve;
     private int status = 0;
     private bool cooldown = false;
     private int rotation = 0;
-    private int nValve = 1;
+    private int nValve = 2;
+
 
     // Start is called before the first frame update
     void Start()
     {
         enigmeValve = GameObject.FindGameObjectWithTag("EnigmeValve").GetComponent<EnigmeValve>();
+
     }
 
     // Update is called once per frame
@@ -37,6 +39,7 @@ public class Valve1 : MonoBehaviour, Interactible
             cooldown = true;
         }
         enigmeValve.setValve(status, nValve);
+
     }
         
 

@@ -2152,6 +2152,50 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 800, y: 600}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &687669631
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 687669633}
+  - component: {fileID: 687669632}
+  m_Layer: 0
+  m_Name: EnigmeValve
+  m_TagString: EnigmeValve
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &687669632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 687669631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3beab1544a5c27459f5ed39a3028bb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &687669633
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 687669631}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 786.8113, y: 356.9401, z: -127.04596}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &864206561
 GameObject:
   m_ObjectHideFlags: 0
@@ -3583,7 +3627,7 @@ MonoBehaviour:
   TestCollectible: {fileID: 7664917535400046615, guid: 36ef250ddc5bb924ca6f2dba2190f4b1, type: 3}
   Cauldron: {fileID: 8702606459036931461, guid: e48127847db2c4445b9f82eb2a302ba1, type: 3}
   TutoDesk: {fileID: 6955683499847813130, guid: c09991e7b35b8fa49a56a8840c35199d, type: 3}
-  Valve1: {fileID: 3560001548636222510, guid: c3478060261e5694c986c5ca5ff67155, type: 3}
+  Valve1: {fileID: 3383773420586190704, guid: 92807523052f32d49a31095d5dd48a89, type: 3}
   showUI: -1
 --- !u!4 &1582481670
 Transform:
@@ -4448,3 +4492,4 @@ SceneRoots:
   - {fileID: 129669676}
   - {fileID: 643606979}
   - {fileID: 2034635554}
+  - {fileID: 687669633}
