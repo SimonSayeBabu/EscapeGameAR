@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8985340684157457756}
+  - component: {fileID: 717066273833526018}
   m_Layer: 0
   m_Name: EnigmeValve
   m_TagString: Untagged
@@ -33,6 +34,18 @@ Transform:
   - {fileID: 983122770675204682}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &717066273833526018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3383773420586190704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3beab1544a5c27459f5ed39a3028bb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8320975262126381746
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -41,6 +54,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8985340684157457756}
     m_Modifications:
+    - target: {fileID: 910342209067787382, guid: c3478060261e5694c986c5ca5ff67155, type: 3}
+      propertyPath: m_Height
+      value: 20.000004
+      objectReference: {fileID: 0}
+    - target: {fileID: 910342209067787382, guid: c3478060261e5694c986c5ca5ff67155, type: 3}
+      propertyPath: m_Center.y
+      value: -0.0000071525574
+      objectReference: {fileID: 0}
+    - target: {fileID: 910342209067787382, guid: c3478060261e5694c986c5ca5ff67155, type: 3}
+      propertyPath: m_Center.z
+      value: -0.00000011920929
+      objectReference: {fileID: 0}
     - target: {fileID: 3560001548636222510, guid: c3478060261e5694c986c5ca5ff67155, type: 3}
       propertyPath: m_Name
       value: Valve1

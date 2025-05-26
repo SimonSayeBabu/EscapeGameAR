@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7272676677716564048}
   - component: {fileID: 9082837580287943101}
   - component: {fileID: 910342209067787382}
-  - component: {fileID: -6127698913476749321}
+  - component: {fileID: 1601938744044994357}
   m_Layer: 0
   m_Name: Valve2
   m_TagString: Untagged
@@ -109,7 +109,7 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
---- !u!114 &-6127698913476749321
+--- !u!114 &1601938744044994357
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -118,9 +118,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 3560001548636222510}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db2704a34a7a1c74a8c60d60d392f781, type: 3}
+  m_Script: {fileID: 11500000, guid: 131cfe89ecc955144b9a1e765f336fbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nValve: 2
 --- !u!1 &8481923670822319735
 GameObject:
   m_ObjectHideFlags: 0
