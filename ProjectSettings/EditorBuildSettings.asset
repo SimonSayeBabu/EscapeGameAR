@@ -12,8 +12,8 @@ EditorBuildSettings:
     path: Assets/Scenes/Tutorial Room.unity
     guid: 9ec684a4a0387924bb9ff59437a9240a
   - enabled: 1
-    path: Assets/Scenes/Alchemy Room.unity
-    guid: 09e8b743a8010404fb295d981152e30c
+    path: Assets/Scenes/Alchemy Class.unity
+    guid: 39984f87a57ba6a489b1ef8a40867a0d
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 44a40d2b34359d1478620a2321701c72, type: 2}
     UnityEditor.XR.ARKit.ARKitSettings: {fileID: 11400000, guid: 67405f27d417cc3418747801adaba402, type: 2}

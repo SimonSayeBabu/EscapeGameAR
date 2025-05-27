@@ -28,9 +28,9 @@ public class RaycastController : MonoBehaviour
 
     void Start()
     {
+        inventory = FindAnyObjectByType<Inventory>();
         UIHandler = FindAnyObjectByType<UIHandler>();
         StartCoroutine(UIHandler.UpdateInv("0"));
-        DontDestroyOnLoad(gameObject);
     }
 
     void Awake()

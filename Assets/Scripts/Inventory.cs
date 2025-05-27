@@ -6,7 +6,7 @@ public class Inventory : MonoBehaviour
 {
     void Start()
     {
-        DontDestroyOnLoad(gameObject);
+        DontDestroyOnLoad(this.gameObject);
     }
     
     public List<int> content = new List<int>();
