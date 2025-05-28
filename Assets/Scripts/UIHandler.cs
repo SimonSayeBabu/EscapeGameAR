@@ -1,4 +1,5 @@
 using System.Collections;
+using TMPro;
 using UnityEngine.UI;
 using UnityEngine;
 
@@ -12,6 +13,9 @@ public class UIHandler : MonoBehaviour
     public GameObject TutorialPanel;
     public GameObject StartSetup;
     
+    public GameObject BookPanel;
+    public Text bookTxt;
+    
     public RaycastController controller;
     public PrefabManager prefabManager;
     public int showUI = -1;
@@ -24,6 +28,7 @@ public class UIHandler : MonoBehaviour
         UIPanel.SetActive(false);
         TutorialPanel.SetActive(false);
         SetupPanel.SetActive(false);
+        BookPanel.SetActive(false);
         controller = FindAnyObjectByType<RaycastController>();
         prefabManager = FindAnyObjectByType<PrefabManager>();
         DontDestroyOnLoad(gameObject);
@@ -94,6 +99,10 @@ public class UIHandler : MonoBehaviour
         controller.PlacedPrefab = prefabManager.GetPrefab("Indice");
     }
 
+    public void ButtonBookClick()
+    {
+        controller.PlacedPrefab = prefabManager.GetPrefab("Indice");
+    }
     public void ShowUI()
     {
         showUI *= -1;
@@ -104,5 +113,16 @@ public class UIHandler : MonoBehaviour
     {
         invtxt.text = "inv : " + content;
         yield return new WaitForSeconds(0f);
+    }
+
+    public void ShowBook(string content)
+    {
+        bookTxt.text = content;
+        BookPanel.SetActive(true);
+    }
+
+    public void HideBook()
+    {
+        BookPanel.SetActive(false);
     }
 }
