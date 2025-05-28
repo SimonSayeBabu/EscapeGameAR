@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 
@@ -7,21 +6,15 @@ public class UIHandler : MonoBehaviour
 {
 
     public Text invtxt;
+    
     public GameObject UIPanel;
     public GameObject SetupPanel;
     public GameObject TutorialPanel;
+    public GameObject StartSetup;
     
     public RaycastController controller;
-    public GameObject start;
-    public GameObject sphere;
-    public GameObject cube;
-    public GameObject earth;
-    public GameObject TestCollectible;
-    public GameObject Cauldron;
-    public GameObject TutoDesk ;
-    public GameObject Valve1;
-
-
+    public PrefabManager prefabManager;
+    
     public int showUI = -1;
 
 
@@ -32,6 +25,8 @@ public class UIHandler : MonoBehaviour
         UIPanel.SetActive(false);
         TutorialPanel.SetActive(false);
         SetupPanel.SetActive(false);
+        controller = FindAnyObjectByType<RaycastController>();
+        prefabManager = FindAnyObjectByType<PrefabManager>();
         DontDestroyOnLoad(gameObject);
     }
 
@@ -43,8 +38,8 @@ public class UIHandler : MonoBehaviour
 
     public void ButtonSetupClick()
     {
+        StartSetup.SetActive(false);
         SetupPanel.SetActive(true);
-        start.SetActive(false);
     }
 
     public void ButtonSetCorner()
@@ -54,11 +49,11 @@ public class UIHandler : MonoBehaviour
     
     public void ButtonEndSetup()
     {
-        if (controller.isCornerSetupDone)
+        if (controller.sceneController.isCornerSetupDone)
         {
             SetupPanel.SetActive(false);
             TutorialPanel.SetActive(true);
-            controller.Setup();
+            controller.sceneController.Setup();
         }
     }
     public void ButtonEndTuto()
@@ -68,31 +63,36 @@ public class UIHandler : MonoBehaviour
 
     public void ButtonSphereClick()
     {
-        controller.PlacedPrefab = sphere;
+        controller.PlacedPrefab = prefabManager.GetPrefab("Sphere");
     }
 
     public void ButtonCubeClick()
     {
-        controller.PlacedPrefab = cube;
+        controller.PlacedPrefab = prefabManager.GetPrefab("Cube");
     }
 
     public void ButtonEarthClick()
     {
-        controller.PlacedPrefab = earth;
+        controller.PlacedPrefab = prefabManager.GetPrefab("Earth");
     }
     public void ButtonCauldronClick()
     {
-        controller.PlacedPrefab = Cauldron;
+        controller.PlacedPrefab = prefabManager.GetPrefab("Big_Cauldron");
     }
 
     public void ButtonCollectibleClick()
     {
-        controller.PlacedPrefab = TestCollectible;
+        controller.PlacedPrefab = prefabManager.GetPrefab("Mushroom Planter");
+    }
+    
+    public void ButtonDoorClick()
+    {
+        controller.PlacedPrefab = prefabManager.GetPrefab("DoorToAlchemy");
     }
 
     public void ButtonValveClick()
     {
-        controller.PlacedPrefab = Valve1;
+        controller.PlacedPrefab = prefabManager.GetPrefab("EnigmeValve");
     }
 
     public void ShowUI()

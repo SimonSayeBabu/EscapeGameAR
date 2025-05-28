@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 817937929950989046}
   - component: {fileID: 5878710590810602444}
   m_Layer: 0
-  m_Name: TutorialDoor
+  m_Name: DoorToTutorial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -130,8 +130,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1aca935c345e4da3b19d4a9e37fe841a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneID: 2
-  keyID: 2
+  sceneID: 1
+  keyID: -1
 --- !u!65 &817937929950989046
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 2034548943569354919}
   - component: {fileID: 395632128501295685}
   m_Layer: 0
-  m_Name: Big_Cauldron
+  m_Name: Cauldron
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

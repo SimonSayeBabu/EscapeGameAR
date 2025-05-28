@@ -8,9 +8,11 @@ public class TutorialDoor : MonoBehaviour, Interactible
 
     public int sceneID;
     public int keyID;
+    private SceneController sceneController;
     // Start is called before the first frame update
     void Start()
     {
+        sceneController = FindAnyObjectByType<SceneController>();
     }
 
     // Update is called once per frame
@@ -20,14 +22,19 @@ public class TutorialDoor : MonoBehaviour, Interactible
 
     public void Interact(Inventory playerInventory)
     {
-        if (keyID is int && keyID != null)
+        if (keyID != -1)
         {
             if (playerInventory.content.IndexOf(keyID) != -1)
             {
-                SceneManager.LoadScene(sceneID);
+                sceneController.SwitchScenes(sceneID);
             }
             
         }
+        else
+        {
+            sceneController.SwitchScenes(sceneID);
+        }
+            
     }
 
     public void LongInteract(Inventory playerInventory)

@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 
@@ -8,17 +7,17 @@ using UnityEngine.XR.ARFoundation;
 public class RaycastController : MonoBehaviour
 {
     private GameObject placedPrefab;
-    private int cornerNumber = 0;
-    private bool isTapped = false;
-    private float timeSinceLastTap = 0f;
-    private Vector3[] corners = new Vector3[4];
-    private ARRaycastManager arRaycastManager;
-    public float holdTime;
+    
+    public SceneController sceneController;
     public UIHandler UIHandler;
-    public bool isCornerSetupDone = false;
     public Camera arCamera;
     public Inventory inventory;
+    
+    private ARRaycastManager arRaycastManager;
     static List<ARRaycastHit> hits = new List<ARRaycastHit>();
+    public float holdTime;
+    private bool isTapped;
+    private float timeSinceLastTap;
 
     public GameObject PlacedPrefab
     {
@@ -28,6 +27,8 @@ public class RaycastController : MonoBehaviour
 
     void Start()
     {
+        DontDestroyOnLoad(gameObject);
+        sceneController = FindAnyObjectByType<SceneController>();
         inventory = FindAnyObjectByType<Inventory>();
         UIHandler = FindAnyObjectByType<UIHandler>();
         StartCoroutine(UIHandler.UpdateInv("0"));
@@ -53,7 +54,7 @@ public class RaycastController : MonoBehaviour
 
     void Update()
     {
-        if (!TryGetTouchPosition(out Vector2 touchPosition) || !isCornerSetupDone) return;
+        if (!TryGetTouchPosition(out Vector2 touchPosition) || !sceneController.isCornerSetupDone) return;
         if (Input.touchCount > 0)
         {
             Touch touch = Input.GetTouch(0);
@@ -146,21 +147,7 @@ public class RaycastController : MonoBehaviour
 
     public void SetupCorner()
     {
-        corners[cornerNumber] = arCamera.transform.position;
-        if (cornerNumber<3)
-        {
-            cornerNumber++;            
-        }
-        else
-        {
-            cornerNumber = 0;
-        }
-        this.isCornerSetupDone = !corners.Contains(Vector3.zero);
-    }
-
-    public void Setup()
-    {
-        Instantiate(UIHandler.TutoDesk, Vector3.Lerp(corners[0], corners[1], 0.5f)+Vector3.up, Quaternion.identity);
+        sceneController.SetupCorner(arCamera.transform.position);
     }
 
 }
