@@ -58,8 +58,6 @@ public class SceneController : MonoBehaviour
         {
             Debug.Log("Scene 2 Setup");
             Instantiate(prefabManager.GetPrefab("Cauldron"), Vector3.Lerp(corners[0], corners[1], 0.5f)+Vector3.up, Quaternion.identity);
-            
-            Instantiate(prefabManager.GetPrefab("DoorToTutorial"), Vector3.Lerp(corners[2], corners[3], 0.5f)+Vector3.up, Quaternion.identity);
         }
     }    
     

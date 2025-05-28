@@ -91,7 +91,7 @@ public class UIHandler : MonoBehaviour
 
     public void ButtonValveClick()
     {
-        controller.PlacedPrefab = WIP;
+        controller.PlacedPrefab = prefabManager.GetPrefab("Indice");
     }
 
     public void ShowUI()
