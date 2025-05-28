@@ -14,7 +14,6 @@ public class UIHandler : MonoBehaviour
     
     public RaycastController controller;
     public PrefabManager prefabManager;
-    
     public int showUI = -1;
 
 
@@ -92,7 +91,7 @@ public class UIHandler : MonoBehaviour
 
     public void ButtonValveClick()
     {
-        controller.PlacedPrefab = prefabManager.GetPrefab("EnigmeValve");
+        controller.PlacedPrefab = WIP;
     }
 
     public void ShowUI()
