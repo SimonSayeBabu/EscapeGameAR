@@ -103,8 +103,13 @@ public class RaycastController : MonoBehaviour
         if (Time.time - timeSinceLastTap >= holdTime)
         {
             Collectible CollectedObject = (Collectible)ObjectTouched;
-            
-            this.inventory.addItem(CollectedObject.Collect());
+            int item = CollectedObject.Collect();
+
+            if (!(this.inventory.contains(item)))
+            {
+                this.inventory.addItem(item);
+
+            }
         }
     }
 

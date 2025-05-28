@@ -30,7 +30,7 @@ public class EnigmeValve : MonoBehaviour
 
     public void setValve(int v, int n)
     {
-        if (somme() < 1 || v == 0)
+        if (somme() < 2 || v == 0)
         {
             valves[n - 1] = v;
         }
