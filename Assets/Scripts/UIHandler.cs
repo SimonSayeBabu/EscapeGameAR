@@ -19,7 +19,7 @@ public class UIHandler : MonoBehaviour
     public GameObject TestCollectible;
     public GameObject Cauldron;
     public GameObject TutoDesk ;
-    public GameObject Valve1;
+    public GameObject WIP;
 
 
     public int showUI = -1;
@@ -92,7 +92,7 @@ public class UIHandler : MonoBehaviour
 
     public void ButtonValveClick()
     {
-        controller.PlacedPrefab = Valve1;
+        controller.PlacedPrefab = WIP;
     }
 
     public void ShowUI()
