@@ -5,17 +5,17 @@ using UnityEngine;
 
 public class UIHandler : MonoBehaviour
 {
-
     public Text invtxt;
-    
+
     public GameObject UIPanel;
     public GameObject SetupPanel;
     public GameObject TutorialPanel;
     public GameObject StartSetup;
-    
+
     public GameObject BookPanel;
     public Text bookTxt;
-    
+    public Image bookImg;
+
     public RaycastController controller;
     public PrefabManager prefabManager;
     public int showUI = -1;
@@ -25,10 +25,12 @@ public class UIHandler : MonoBehaviour
     void Start()
     {
         invtxt.text = "";
+
         UIPanel.SetActive(false);
         TutorialPanel.SetActive(false);
         SetupPanel.SetActive(false);
         BookPanel.SetActive(false);
+
         controller = FindAnyObjectByType<RaycastController>();
         prefabManager = FindAnyObjectByType<PrefabManager>();
         DontDestroyOnLoad(gameObject);
@@ -37,7 +39,6 @@ public class UIHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
     }
 
     public void ButtonSetupClick()
@@ -50,7 +51,7 @@ public class UIHandler : MonoBehaviour
     {
         controller.SetupCorner();
     }
-    
+
     public void ButtonEndSetup()
     {
         if (controller.sceneController.isCornerSetupDone)
@@ -60,25 +61,17 @@ public class UIHandler : MonoBehaviour
             controller.sceneController.Setup();
         }
     }
+
     public void ButtonEndTuto()
     {
         TutorialPanel.SetActive(false);
-    }
-
-    public void ButtonSphereClick()
-    {
-        controller.PlacedPrefab = prefabManager.GetPrefab("Sphere");
-    }
-
-    public void ButtonCubeClick()
-    {
-        controller.PlacedPrefab = prefabManager.GetPrefab("Cube");
     }
 
     public void ButtonEarthClick()
     {
         controller.PlacedPrefab = prefabManager.GetPrefab("Earth");
     }
+
     public void ButtonCauldronClick()
     {
         controller.PlacedPrefab = prefabManager.GetPrefab("Big_Cauldron");
@@ -88,7 +81,7 @@ public class UIHandler : MonoBehaviour
     {
         controller.PlacedPrefab = prefabManager.GetPrefab("Mushroom Planter");
     }
-    
+
     public void ButtonDoorClick()
     {
         controller.PlacedPrefab = prefabManager.GetPrefab("DoorToAlchemy");
@@ -103,6 +96,7 @@ public class UIHandler : MonoBehaviour
     {
         controller.PlacedPrefab = prefabManager.GetPrefab("Indice");
     }
+
     public void ShowUI()
     {
         showUI *= -1;
@@ -117,7 +111,15 @@ public class UIHandler : MonoBehaviour
 
     public void ShowBook(string content)
     {
+        bookImg.gameObject.SetActive(false);
         bookTxt.text = content;
+        BookPanel.SetActive(true);
+    }
+
+    public void ShowBook(Sprite image)
+    {
+        bookTxt.gameObject.SetActive(false);
+        bookImg.sprite = image;
         BookPanel.SetActive(true);
     }
 

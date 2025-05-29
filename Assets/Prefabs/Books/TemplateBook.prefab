@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1778993100249890809}
   - component: {fileID: 4275440261818168768}
   m_Layer: 0
-  m_Name: Indice
+  m_Name: TemplateBook
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -67,6 +67,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 540ced014f2edd946872543cc17b5652, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  txt: Insert Text Here
+  isImage: 0
+  image: {fileID: 21300000, guid: 63d25c304f21f4541a5d1f0edd1cc88e, type: 3}
 --- !u!1001 &227755621184974978
 PrefabInstance:
   m_ObjectHideFlags: 0

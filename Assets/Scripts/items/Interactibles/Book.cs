@@ -1,9 +1,14 @@
+using System;
 using UnityEngine;
 
-public class Livre : MonoBehaviour, Interactible
+public class Book : MonoBehaviour, Interactible
 {
 
     private UIHandler  uiHandler;
+    public string txt;
+    public bool isImage;
+    public Sprite image;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -18,7 +23,15 @@ public class Livre : MonoBehaviour, Interactible
     
     public void Interact(Inventory playerInventory)
     {
-        uiHandler.ShowBook("test !");
+        if (isImage)
+        {
+            Debug.Log(isImage);
+            uiHandler.ShowBook(image);
+        }
+        else
+        {
+            uiHandler.ShowBook(txt);
+        }
     }
 
     public void LongInteract(Inventory playerInventory) 
