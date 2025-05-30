@@ -11,6 +11,7 @@ public class UIHandler : MonoBehaviour
     public GameObject SetupPanel;
     public GameObject TutorialPanel;
     public GameObject StartSetup;
+    public GameObject InventoryPanel;
 
     public GameObject BookPanel;
     public Text bookTxt;
@@ -30,6 +31,7 @@ public class UIHandler : MonoBehaviour
         TutorialPanel.SetActive(false);
         SetupPanel.SetActive(false);
         BookPanel.SetActive(false);
+        InventoryPanel.SetActive(false);
 
         controller = FindAnyObjectByType<RaycastController>();
         prefabManager = FindAnyObjectByType<PrefabManager>();
