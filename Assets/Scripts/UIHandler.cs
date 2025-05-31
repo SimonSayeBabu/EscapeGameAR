@@ -76,7 +76,7 @@ public class UIHandler : MonoBehaviour
 
     public void ButtonCauldronClick()
     {
-        controller.PlacedPrefab = prefabManager.GetPrefab("Big_Cauldron");
+        controller.PlacedPrefab = prefabManager.GetPrefab("Cauldron");
     }
 
     public void ButtonCollectibleClick()

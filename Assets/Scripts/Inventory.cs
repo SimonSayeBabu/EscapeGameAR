@@ -16,6 +16,16 @@ public class Inventory : MonoBehaviour
         return this.content[index];
     }
 
+    public bool contains(int item)
+    {
+        return content.IndexOf(item) != -1;    
+    }
+
+    public int whereIs(int item)
+    {
+        return content.IndexOf(item);
+    }
+
     public void addItem(int item)
     {
         this.content.Add(item);
