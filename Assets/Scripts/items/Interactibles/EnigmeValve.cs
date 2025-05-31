@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class EnigmeValve : MonoBehaviour
 {
-    int[] valves = new int[5];
-    
+    int[] valves = new int[6];
+    int[] correctValves = { 1, 2 };
+
     // Start is called before the first frame update
     void Start()
     {
@@ -43,5 +44,10 @@ public class EnigmeValve : MonoBehaviour
             return true;
         }
         return false;
+    }
+
+    public bool amIOpen(int valve)
+    {
+        return valves[valve - 1] == 1;
     }
 }

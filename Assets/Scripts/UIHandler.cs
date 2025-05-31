@@ -91,7 +91,7 @@ public class UIHandler : MonoBehaviour
 
     public void ButtonValveClick()
     {
-        controller.PlacedPrefab = prefabManager.GetPrefab("Indice");
+        controller.PlacedPrefab = prefabManager.GetPrefab("EnigmeValve");
     }
 
     public void ButtonBookClick()
