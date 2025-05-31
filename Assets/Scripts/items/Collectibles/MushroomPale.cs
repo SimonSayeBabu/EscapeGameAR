@@ -3,6 +3,7 @@ using UnityEngine;
 public class MushroomPale : MonoBehaviour, Collectible
 {
     public int id { get; set; } = 15;
+    public Sprite icon { get; set; }
     // Start is called before the first frame update
     void Start()
     {

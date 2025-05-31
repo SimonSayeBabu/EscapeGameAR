@@ -3,6 +3,7 @@ using UnityEngine;
 public class MushroomBrown : MonoBehaviour, Collectible
 {
     public int id { get; set; } = 10;
+    public Sprite icon { get; set; }
     // Start is called before the first frame update
     void Start()
     {
