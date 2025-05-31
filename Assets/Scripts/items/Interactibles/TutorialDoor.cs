@@ -24,7 +24,7 @@ public class TutorialDoor : MonoBehaviour, Interactible
     {
         if (keyID != -1)
         {
-            if (playerInventory.content.IndexOf(keyID) != -1)
+            if (playerInventory.contains(keyID) != -1)
             {
                 sceneController.SwitchScenes(sceneID);
             }

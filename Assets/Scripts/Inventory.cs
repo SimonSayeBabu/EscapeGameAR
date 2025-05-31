@@ -4,52 +4,50 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
+    
+    public List<Collectible> content = new List<Collectible>();
+
     void Start()
     {
         DontDestroyOnLoad(gameObject);
     }
-    
-    public List<int> content = new List<int>();
-
-    public int getItem(int index)
+    public Collectible getItem(int index)
     {
-        return this.content[index];
+        return content[index];
     }
 
-    public bool contains(int item)
+    public int contains(int itemID)
     {
-        return content.IndexOf(item) != -1;    
+        for (int i = 0; i < content.Count; i++)
+        {
+            if (content[i].id == itemID)
+            {
+                return i;
+            }
+        }
+        return -1;   
     }
 
-    public int whereIs(int item)
+    public int whereIs(Collectible item)
     {
         return content.IndexOf(item);
     }
 
-    public void addItem(int item)
+    public void addItem(Collectible item)
     {
-        this.content.Add(item);
+        content.Add(item);
     }
 
     public void removeItem(int index)
     {
-        this.content.RemoveAt(index);
+        content.RemoveAt(index);
     }
 
-    public int useItem(int index)
+    public Collectible useItem(int index)
     {
-        int temp = content[index];
-        this.content.RemoveAt(index);
+        Collectible temp = content[index];
+        content.RemoveAt(index);
         return temp;
     }
 
-    //Marche Pas 
-    public string toString() 
-    {
-        if (this.content.Count == 0)
-        {
-            return "0";
-        }
-        return string.Join(", ", content);
-    }
 }

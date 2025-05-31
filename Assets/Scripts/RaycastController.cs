@@ -31,7 +31,7 @@ public class RaycastController : MonoBehaviour
         sceneController = FindAnyObjectByType<SceneController>();
         inventory = FindAnyObjectByType<Inventory>();
         UIHandler = FindAnyObjectByType<UIHandler>();
-        StartCoroutine(UIHandler.UpdateInv("0"));
+        UIHandler.UpdateInv(inventory);
     }
 
     void Awake()
@@ -92,7 +92,7 @@ public class RaycastController : MonoBehaviour
                             break;
                         }
                     }
-                    StartCoroutine(UIHandler.UpdateInv(this.inventory.ToString()));
+                    UIHandler.UpdateInv(inventory);
                 }
             }
         }
@@ -103,12 +103,10 @@ public class RaycastController : MonoBehaviour
         if (Time.time - timeSinceLastTap >= holdTime)
         {
             Collectible CollectedObject = (Collectible)ObjectTouched;
-            int item = CollectedObject.Collect();
 
-            if (!(this.inventory.contains(item)))
+            if (inventory.contains(CollectedObject.id) == -1)
             {
-                this.inventory.addItem(item);
-
+                inventory.addItem(CollectedObject.Collect());
             }
         }
     }

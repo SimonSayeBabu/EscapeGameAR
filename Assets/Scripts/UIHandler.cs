@@ -1,17 +1,16 @@
 using System.Collections;
-using TMPro;
+using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 
 public class UIHandler : MonoBehaviour
 {
-    public Text invtxt;
-
     public GameObject UIPanel;
     public GameObject SetupPanel;
     public GameObject TutorialPanel;
     public GameObject StartSetup;
     public GameObject InventoryPanel;
+    public List<GameObject> ItemPanels;
 
     public GameObject BookPanel;
     public Text bookTxt;
@@ -25,8 +24,6 @@ public class UIHandler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        invtxt.text = "";
-
         UIPanel.SetActive(false);
         TutorialPanel.SetActive(false);
         SetupPanel.SetActive(false);
@@ -105,11 +102,26 @@ public class UIHandler : MonoBehaviour
         UIPanel.SetActive(showUI > 0);
     }
 
-    public IEnumerator UpdateInv(string content)
+    public void UpdateInv(Inventory inventory)
     {
-        invtxt.text = "inv : " + content;
-        yield return new WaitForSeconds(0f);
+        for (int i = 0; i < ItemPanels.Count; i++)
+        {
+            Image img = ItemPanels[i].transform.Find("Image").GetComponent<Image>();
+
+            if (i < inventory.content.Count && i < 8)
+            {
+                Collectible item = inventory.content[i];
+                img.sprite = item.icon;
+                img.enabled = true;
+            }
+            else
+            {
+                img.enabled = false;
+            }
+        }
     }
+
+
 
     public void ShowBook(string content)
     {

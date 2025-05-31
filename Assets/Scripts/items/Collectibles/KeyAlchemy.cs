@@ -3,7 +3,12 @@ using UnityEngine;
 public class KeyAlchemy : MonoBehaviour, Collectible
 {
     public int id { get; set; } = 2;
-    public Sprite icon { get; set; }
+    [SerializeField] private Sprite _icon;
+    public Sprite icon
+    {
+        get => _icon ?? Resources.Load<Sprite>("sprite/missing_texture");
+        set => _icon = value;
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -20,9 +25,9 @@ public class KeyAlchemy : MonoBehaviour, Collectible
         
     }
 
-    public int Collect()
+    public Collectible Collect()
     {
-        Destroy(this.gameObject);
-        return this.id;
+        Destroy(gameObject);
+        return this;
     }
 }

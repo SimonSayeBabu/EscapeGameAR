@@ -26,13 +26,11 @@ public class Drawers : MonoBehaviour, Interactible
         }
         else
         {
-            if (playerInventory.content.IndexOf(1) != -1)
+            if (playerInventory.contains(1) != -1)
             {
                 Open();
             }
         }
-
-        
     }
 
     public void LongInteract(Inventory playerInventory) {}

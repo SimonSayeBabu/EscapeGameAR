@@ -6,5 +6,5 @@ public interface Collectible
     Sprite icon { get; set; }
     void Interact();
 
-    int Collect();
+    Collectible Collect();
 }
