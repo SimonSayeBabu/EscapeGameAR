@@ -9,7 +9,6 @@ public class UIHandler : MonoBehaviour
     public GameObject UIPanel;
     public GameObject SetupPanel;
     public GameObject TutorialPanel;
-    public GameObject StartSetup;
     
     public GameObject InventoryPanel;
     public GameObject InventoryButton;
@@ -22,6 +21,7 @@ public class UIHandler : MonoBehaviour
     public Image bookImg;
 
     public RaycastController controller;
+    public PlaneDetectionController PlaneController;
     public PrefabManager prefabManager;
     public int showUI = -1;
 
@@ -34,6 +34,7 @@ public class UIHandler : MonoBehaviour
         SetupPanel.SetActive(false);
         BookPanel.SetActive(false);
         InventoryPanel.SetActive(false);
+        InventoryButton.SetActive(false);
         CauldronUi.SetActive(false);
 
         controller = FindAnyObjectByType<RaycastController>();
@@ -45,31 +46,13 @@ public class UIHandler : MonoBehaviour
     void Update()
     {
     }
-
-    public void ButtonSetupClick()
-    {
-        StartSetup.SetActive(false);
-        SetupPanel.SetActive(true);
-    }
-
-    public void ButtonSetCorner()
-    {
-        controller.SetupCorner();
-    }
-
+    
     public void ButtonEndSetup()
     {
-        if (controller.sceneController.isCornerSetupDone)
-        {
-            SetupPanel.SetActive(false);
-            TutorialPanel.SetActive(true);
-            controller.sceneController.Setup();
-        }
-    }
-
-    public void ButtonEndTuto()
-    {
-        TutorialPanel.SetActive(false);
+        PlaneController.StopPlaneDetection();
+        controller.sceneController.isSetupDone = true;
+        controller.sceneController.CalculatePlacementData();
+        controller.sceneController.Setup();
     }
 
     public void ButtonEarthClick()
@@ -89,7 +72,7 @@ public class UIHandler : MonoBehaviour
 
     public void ButtonDoorClick()
     {
-        controller.PlacedPrefab = prefabManager.GetPrefab("DoorToAlchemy");
+        controller.PlacedPrefab = prefabManager.GetPrefab("DoorToStart");
     }
 
     public void ButtonValveClick()
@@ -114,9 +97,9 @@ public class UIHandler : MonoBehaviour
         {
             Image img = ItemPanels[i].transform.Find("Image").GetComponent<Image>();
 
-            if (i < inventory.content.Count && i < 8)
+            Collectible item = inventory.content[i];
+            if (i < inventory.content.Count && i < 8 && item.active == true)
             {
-                Collectible item = inventory.content[i];
                 img.sprite = item.icon;
                 img.enabled = true;
             }

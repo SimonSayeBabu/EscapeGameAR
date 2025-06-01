@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 
 
-public class TutorialDoor : MonoBehaviour, Interactible
+public class Door: MonoBehaviour, Interactible
 {
 
     public int sceneID;
@@ -26,6 +26,7 @@ public class TutorialDoor : MonoBehaviour, Interactible
         {
             if (playerInventory.contains(keyID) != -1)
             {
+                playerInventory.content[playerInventory.contains(keyID)].active = false;
                 sceneController.SwitchScenes(sceneID);
             }
             

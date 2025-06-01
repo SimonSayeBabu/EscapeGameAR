@@ -3,6 +3,7 @@ using UnityEngine;
 public class MushroomGreen : MonoBehaviour, Collectible
 {
     public int id { get; set; } = 13;
+    public bool active { get; set; } = true;
     [SerializeField] private Sprite _icon;
     public Sprite icon
     {

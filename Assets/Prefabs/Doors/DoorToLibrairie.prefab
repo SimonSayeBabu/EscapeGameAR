@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 176988276065482861}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 817937929950989046}
   - component: {fileID: 5878710590810602444}
   m_Layer: 0
-  m_Name: DoorToTutorial
+  m_Name: DoorToLibrairie
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -130,7 +130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1aca935c345e4da3b19d4a9e37fe841a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneID: 1
+  sceneID: 4
   keyID: -1
 --- !u!65 &817937929950989046
 BoxCollider:
@@ -151,8 +151,8 @@ BoxCollider:
   m_ProvidesContacts: 1
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.9716723, y: 1.9223826, z: 0.21116498}
-  m_Center: {x: -0.47461808, y: 0.95070887, z: 0.05691968}
+  m_Size: {x: 0.96712404, y: 1.9223826, z: 0.21116498}
+  m_Center: {x: 0.036810726, y: 0.95070887, z: 0.05691968}
 --- !u!54 &5878710590810602444
 Rigidbody:
   m_ObjectHideFlags: 0

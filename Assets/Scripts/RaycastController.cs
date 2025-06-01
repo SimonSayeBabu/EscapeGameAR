@@ -18,6 +18,8 @@ public class RaycastController : MonoBehaviour
     public float holdTime;
     private bool isTapped;
     private float timeSinceLastTap;
+    public float interactionCooldown = 0.5f; 
+    private float lastInteractionTime = -Mathf.Infinity;
 
     public GameObject PlacedPrefab
     {
@@ -54,7 +56,9 @@ public class RaycastController : MonoBehaviour
 
     void Update()
     {
-        if (!TryGetTouchPosition(out Vector2 touchPosition) || !sceneController.isCornerSetupDone) return;
+        if (Time.time - lastInteractionTime < interactionCooldown)
+            return;
+        if (!TryGetTouchPosition(out Vector2 touchPosition) || !sceneController.isSetupDone) return;
         if (Input.touchCount > 0)
         {
             Touch touch = Input.GetTouch(0);
@@ -107,23 +111,25 @@ public class RaycastController : MonoBehaviour
             if (inventory.contains(CollectedObject.id) == -1)
             {
                 inventory.addItem(CollectedObject.Collect());
+                lastInteractionTime = Time.time;
             }
         }
     }
 
+
     private void TouchInteractible(MonoBehaviour ObjectTouched)
     {
-        Debug.Log("TouchInteractible" +  ObjectTouched.GetType());
-        Interactible IntercactedObject = (Interactible)ObjectTouched;
+        Interactible InteractedObject = (Interactible)ObjectTouched;
         if (Time.time - timeSinceLastTap >= holdTime)
         {
-            IntercactedObject.LongInteract();
+            InteractedObject.LongInteract();
         }
         else
         {
-            Debug.Log("TouchInteractible DANS LE ELSE");
-            IntercactedObject.Interact(this.inventory);
+            InteractedObject.Interact(this.inventory);
         }
+
+        lastInteractionTime = Time.time;
     }
 
     private void IsTappedSet(Touch touch)
@@ -148,10 +154,4 @@ public class RaycastController : MonoBehaviour
                 throw new ArgumentOutOfRangeException();
         }
     }
-
-    public void SetupCorner()
-    {
-        sceneController.SetupCorner(arCamera.transform.position);
-    }
-
 }

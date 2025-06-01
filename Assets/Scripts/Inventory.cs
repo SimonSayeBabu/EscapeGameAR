@@ -28,11 +28,6 @@ public class Inventory : MonoBehaviour
         return -1;   
     }
 
-    public int whereIs(Collectible item)
-    {
-        return content.IndexOf(item);
-    }
-
     public void addItem(Collectible item)
     {
         content.Add(item);
