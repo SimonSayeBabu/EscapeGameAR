@@ -4,17 +4,18 @@ using UnityEngine;
 public class Cauldron : MonoBehaviour, Interactible
 {
     public Material material;
+    private int currentStep;
     private int activeRecipe = -1;
     public int[,] recipes = {{20,11,15,0,0},{20,10,12,21,0}};
     //Recipe 1 : Growth potion = Water, Red mushroom, Pale mushroom
     //Recipe 2 : Objective = Water, Brown mushroom, White mushroom, Special plant
     public UIHandler uiHandler;
-    private bool cooldown = false;
+    private bool cooldown;
     public GameObject resultat1;
     public GameObject resultat2;
 
     public ParticleSystem bulles;
-    private bool bullesStatus = false;
+    private bool bullesStatus;
     public ParticleSystem fumee;
     private ParticleSystem.MainModule mainBulles;
     private ParticleSystem.MainModule mainFumee;
