@@ -13,6 +13,13 @@ public class Valve : MonoBehaviour, Interactible
     // Start is called before the first frame update
     void Start()
     {
+        /* Si il faut set les valves quand on re-entre dans une scene
+        if (enigmeValve.amIOpen(nValve))
+        {
+            isOpen = 1;
+            gameObject.transform.Rotate(0, 0, 45);
+        }
+        */
     }
 
     // Update is called once per frame
@@ -33,7 +40,7 @@ public class Valve : MonoBehaviour, Interactible
             cooldown = true;
             isOpen = (isOpen + 1) % 2;
             if (isOpen == 0) rotation = 45; else rotation = -45;
-            gameObject.transform.Rotate(0, 0, rotation);
+            transform.RotateAround(transform.position, transform.up, rotation);
         }
         enigmeValve.setValve(isOpen, nValve);
     }
