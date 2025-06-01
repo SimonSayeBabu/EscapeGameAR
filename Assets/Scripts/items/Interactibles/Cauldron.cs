@@ -13,15 +13,27 @@ public class cauldron : MonoBehaviour, Interactible
     //Recipe 1 : Growth potion = Water, Red mushroom, Pale mushroom
     //Recipe 2 : Objective = Water, Brown mushroom, White mushroom, Special plant
     private int currentStep = 0;
+    private bool cooldown = false;
     public GameObject resultat1;
     public GameObject resultat2;
+
+    public ParticleSystem bulles;
+    private bool bullesStatus = false;
+    public ParticleSystem fumee;
+    private ParticleSystem.MainModule mainBulles;
+    private ParticleSystem.MainModule mainFumee;
 
 
 
     // Start is called before the first frame update
     void Start()
     {
-        this.material.color = new Color(0f,0f,0f,0f);
+        this.material.color = new Color(0f, 0f, 0f, 0f);
+        bulles.Stop();
+        fumee.Stop();
+        mainBulles = bulles.main;
+        mainFumee = fumee.main;
+
     }
 
     // Update is called once per frame
@@ -30,59 +42,66 @@ public class cauldron : MonoBehaviour, Interactible
 
     }
 
-    public void reset() {
+    public void reset()
+    {
         activeRecipe = -1;
         changeColor(0);
+        cooldown = false;
     }
 
     public void addItem(int item)
     {
-        if (currentStep == 0)
+        if (!cooldown)
         {
-            if (item == 20)
+            if (currentStep == 0)
             {
-                currentStep++;
-                changeColor(item);
-            }
-        }
-        else
-        {
-            if (activeRecipe == -1)
-            {
-                for (int i = 0; i < 2; i++)
-                {
-                    if (item == recipes[i, currentStep])
-                    {
-                        currentStep++;
-                        changeColor(item);
-                        activeRecipe = i;
-                    }
-                }
-                if (activeRecipe == -1)
-                {
-                    changeColor(-1);
-                    activeRecipe = -2;
-                }
-            }
-            else if (activeRecipe != -2)
-            {
-                if (recipes[activeRecipe, currentStep] == item)
+                if (item == 20)
                 {
                     currentStep++;
                     changeColor(item);
                 }
-                else
+            }
+            else
+            {
+                if (activeRecipe == -1)
                 {
-                    currentStep = 0;
-                    activeRecipe = -2;
-                    changeColor(-1);
+                    for (int i = 0; i < 2; i++)
+                    {
+                        if (item == recipes[i, currentStep])
+                        {
+                            currentStep++;
+                            changeColor(item);
+                            activeRecipe = i;
+                        }
+                    }
+                    if (activeRecipe == -1)
+                    {
+                        changeColor(-1);
+                        activeRecipe = -2;
+                    }
+                }
+                else if (activeRecipe != -2)
+                {
+                    if (recipes[activeRecipe, currentStep] == item)
+                    {
+                        currentStep++;
+                        changeColor(item);
+                    }
+                    else
+                    {
+                        currentStep = 0;
+                        activeRecipe = -2;
+                        changeColor(-1);
+                    }
+                }
+                if (activeRecipe >= 0 && recipes[activeRecipe, currentStep] == 0)
+                {
+                    finishRecipe(activeRecipe);
                 }
             }
-            if (activeRecipe >= 0 && recipes[activeRecipe, currentStep] == 0)
-            {
-                finishRecipe(activeRecipe);
-            }
+            
         }
+        
         
     }
 
@@ -91,6 +110,8 @@ public class cauldron : MonoBehaviour, Interactible
         if (value == 0)
         {
             this.material.color = new Color(0f,0f,0f,0f);
+            bulles.Stop();
+            bullesStatus = false;
             return;
         }
         Color selectedColor = Color.white;
@@ -125,6 +146,11 @@ public class cauldron : MonoBehaviour, Interactible
         }
 
 
+        if (!bullesStatus)
+        {
+            bulles.Play();
+        }
+        mainBulles.startColor = selectedColor;
         this.material.color = selectedColor;
     }
 
@@ -132,7 +158,7 @@ public class cauldron : MonoBehaviour, Interactible
     {
         Invoke("reset", 1f);
 
-
+        fumee.Play();
         recipes[recipe, 0] = -1;
         if (recipe == 0)
         {
@@ -140,9 +166,9 @@ public class cauldron : MonoBehaviour, Interactible
         }
         else if (recipe == 1)
         {
-            Instantiate(resultat2, new Vector3(this.transform.position.x,this.transform.position.y+0.5f,this.transform.position.z),Quaternion.Euler(0,0,0));
-
+            Instantiate(resultat2, new Vector3(this.transform.position.x, this.transform.position.y + 0.5f, this.transform.position.z), Quaternion.Euler(0, 0, 0));
         }
+        cooldown = true;
     }
 
 

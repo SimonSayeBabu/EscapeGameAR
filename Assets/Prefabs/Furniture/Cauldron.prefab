@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5130029904208949025}
   - component: {fileID: 3023945404535386680}
   m_Layer: 0
-  m_Name: Particle System
+  m_Name: Fumee
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9895,3 +9895,5 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: 3e21445c35ecbca4d901af2ae817e6d7, type: 2}
   resultat1: {fileID: 1539688957292056691, guid: f63df71161fd98c4191fdbc25700aa62, type: 3}
   resultat2: {fileID: 9094967195158229417, guid: 572738c4d0599f548bfb81c7f67b7c39, type: 3}
+  bulles: {fileID: 7109042071675776280}
+  fumee: {fileID: 5130029904208949025}
