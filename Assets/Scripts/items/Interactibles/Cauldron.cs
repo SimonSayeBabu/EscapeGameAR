@@ -1,8 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.XR.ARFoundation;
-using UnityEngine.XR.ARSubsystems;
 
 
 public class cauldron : MonoBehaviour, Interactible
@@ -12,16 +8,17 @@ public class cauldron : MonoBehaviour, Interactible
     private int[,] recipes = {{20,11,15,0,0},{20,10,12,21,0}};
     //Recipe 1 : Growth potion = Water, Red mushroom, Pale mushroom
     //Recipe 2 : Objective = Water, Brown mushroom, White mushroom, Special plant
-    private int currentStep = 0;
+    private int currentStep;
     public GameObject resultat1;
     public GameObject resultat2;
 
-
+    public UIHandler uiHandler;
 
     // Start is called before the first frame update
     void Start()
     {
-        this.material.color = new Color(0f,0f,0f,0f);
+        material.color = new Color(0f,0f,0f,0f);
+        uiHandler = FindAnyObjectByType<UIHandler>();
     }
 
     // Update is called once per frame
@@ -154,5 +151,6 @@ public class cauldron : MonoBehaviour, Interactible
 
     public void LongInteract(Inventory playerInventory)
     {
+        
     }
 }

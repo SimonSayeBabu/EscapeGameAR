@@ -9,9 +9,12 @@ public class UIHandler : MonoBehaviour
     public GameObject SetupPanel;
     public GameObject TutorialPanel;
     public GameObject StartSetup;
+    
     public GameObject InventoryPanel;
+    public GameObject InventoryButton;
     public List<GameObject> ItemPanels;
-
+    public GameObject CauldronUi;
+    
     public GameObject BookPanel;
     public Text bookTxt;
     public Image bookImg;
@@ -29,6 +32,7 @@ public class UIHandler : MonoBehaviour
         SetupPanel.SetActive(false);
         BookPanel.SetActive(false);
         InventoryPanel.SetActive(false);
+        CauldronUi.SetActive(false);
 
         controller = FindAnyObjectByType<RaycastController>();
         prefabManager = FindAnyObjectByType<PrefabManager>();
@@ -121,7 +125,12 @@ public class UIHandler : MonoBehaviour
         }
     }
 
-
+    public void ShowCauldron()
+    {
+        CauldronUi.SetActive(true);
+        InventoryPanel.SetActive(true);
+        InventoryButton.SetActive(false);
+    }
 
     public void ShowBook(string content)
     {
