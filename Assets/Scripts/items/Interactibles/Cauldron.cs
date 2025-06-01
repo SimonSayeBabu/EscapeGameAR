@@ -1,11 +1,11 @@
 using UnityEngine;
 
 
-public class cauldron : MonoBehaviour, Interactible
+public class Cauldron : MonoBehaviour, Interactible
 {
     public Material material;
     private int activeRecipe = -1;
-    private int[,] recipes = {{20,11,15,0,0},{20,10,12,21,0}};
+    public int[,] recipes = {{20,11,15,0,0},{20,10,12,21,0}};
     //Recipe 1 : Growth potion = Water, Red mushroom, Pale mushroom
     //Recipe 2 : Objective = Water, Brown mushroom, White mushroom, Special plant
     private int currentStep;
@@ -145,7 +145,8 @@ public class cauldron : MonoBehaviour, Interactible
 
     public void Interact(Inventory playerInventory)
     {
-        finishRecipe(0);
+        //finishRecipe(0);
+        uiHandler.ShowCauldron(playerInventory, this);
         //changeColor(11);
     }
 

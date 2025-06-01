@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
@@ -14,6 +15,7 @@ public class UIHandler : MonoBehaviour
     public GameObject InventoryButton;
     public List<GameObject> ItemPanels;
     public GameObject CauldronUi;
+    public List<GameObject> CauldronPanels;
     
     public GameObject BookPanel;
     public Text bookTxt;
@@ -125,12 +127,64 @@ public class UIHandler : MonoBehaviour
         }
     }
 
-    public void ShowCauldron()
+    public void ShowCauldron(Inventory playerInventory, Cauldron cauldron)
     {
+        Debug.Log(playerInventory, cauldron);
+        UpdateCauldronUI(playerInventory, cauldron);
         CauldronUi.SetActive(true);
-        InventoryPanel.SetActive(true);
+        InventoryPanel.SetActive(false);
         InventoryButton.SetActive(false);
     }
+    
+    public void UpdateCauldronUI(Inventory inventory, Cauldron cauldron)
+    {
+        HashSet<int> validIDs = new HashSet<int>();
+
+        for (int i = 0; i < cauldron.recipes.GetLength(0); i++)
+        {
+            for (int j = 0; j < cauldron.recipes.GetLength(1); j++)
+            {
+                int id = cauldron.recipes[i, j];
+                if (id > 0)
+                    validIDs.Add(id);
+            }
+        }
+
+        List<Collectible> validItems = new List<Collectible>();
+
+        foreach (Collectible item in inventory.content)
+        {
+            if (validIDs.Contains(item.id))
+            {
+                validItems.Add(item);
+            }
+        }
+
+        for (int i = 0; i < CauldronPanels.Count; i++)
+        {
+            Image img = CauldronPanels[i].transform.Find("Image").GetComponent<Image>();
+            Button btn = CauldronPanels[i].GetComponent<Button>();
+
+            if (i < validItems.Count && i < 8)
+            {
+                Collectible item = validItems[i];
+                img.sprite = item.icon;
+                img.enabled = true;
+
+                int id = item.id; //UTILISE çA
+                btn.onClick.RemoveAllListeners();
+                btn.onClick.AddListener(() => {
+                    // ICI POUR INTERAGIR AVEC ITEM 
+                });
+            }
+            else
+            {
+                img.sprite = null;
+                img.enabled = false;
+            }
+        }
+    }
+
 
     public void ShowBook(string content)
     {
