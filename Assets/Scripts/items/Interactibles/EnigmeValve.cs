@@ -61,4 +61,18 @@ public class EnigmeValve : MonoBehaviour
     {
         return valves[valve - 1] == 1;
     }
+
+    public int nbCorrectValves()
+    {
+        int ret = 0;
+        if (valves[correctValves[0]] == 1)
+        {
+            ret += 1;
+        }
+        if (valves[correctValves[1]] == 1)
+        {
+            ret += 1;
+        }
+        return ret;
+    }
 }
