@@ -23,12 +23,13 @@ public class Cauldron : MonoBehaviour, Interactible
     // Start is called before the first frame update
     void Start()
     {
-        material.color = new Color(0f,0f,0f,0f);
+        material.color = new Color(0f, 0f, 0f, 0f);
         uiHandler = FindAnyObjectByType<UIHandler>();
         bulles.Stop();
         fumee.Stop();
         mainBulles = bulles.main;
         mainFumee = fumee.main;
+        finishRecipe(1);
     }
 
     // Update is called once per frame
@@ -157,11 +158,11 @@ public class Cauldron : MonoBehaviour, Interactible
         recipes[recipe, 0] = -1;
         if (recipe == 0)
         {
-            Instantiate(resultat1, new Vector3(this.transform.position.x, this.transform.position.y + 0.5f, this.transform.position.z), Quaternion.Euler(0, 0, 0));
+            Instantiate(resultat1, new Vector3(this.transform.position.x, this.transform.position.y + 0.75f, this.transform.position.z), Quaternion.Euler(0, 0, 0));
         }
         else if (recipe == 1)
         {
-            Instantiate(resultat2, new Vector3(this.transform.position.x, this.transform.position.y + 0.5f, this.transform.position.z), Quaternion.Euler(0, 0, 0));
+            Instantiate(resultat2, new Vector3(this.transform.position.x, this.transform.position.y + 0.75f, this.transform.position.z), Quaternion.Euler(0, 0, 0));
         }
         cooldown = true;
     }

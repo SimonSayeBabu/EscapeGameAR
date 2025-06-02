@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Serum : MonoBehaviour, Interactible
+public class Tonneau : MonoBehaviour, Interactible
 {
 
     public EnigmeValve enigmeValve;
