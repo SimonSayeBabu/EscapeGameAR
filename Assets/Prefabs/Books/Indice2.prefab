@@ -69,7 +69,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   txt: 
   isImage: 1
-  image: {fileID: 21300000, guid: bd3e5807465ca7542a6e9b6f4d25e8da, type: 3}
+  image: {fileID: 21300000, guid: 301403822c68bdd4dbdd3d0a3266975c, type: 3}
 --- !u!1 &8269658487789644597
 GameObject:
   m_ObjectHideFlags: 0
