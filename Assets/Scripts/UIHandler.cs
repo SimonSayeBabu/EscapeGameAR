@@ -97,11 +97,18 @@ public class UIHandler : MonoBehaviour
         {
             Image img = ItemPanels[i].transform.Find("Image").GetComponent<Image>();
 
-            Collectible item = inventory.content[i];
-            if (i < inventory.content.Count && i < 8 && item.active == true)
+            if (i < inventory.content.Count && i < 8)
             {
-                img.sprite = item.icon;
-                img.enabled = true;
+                Collectible item = inventory.content[i];
+                if (item.active)
+                {
+                    img.sprite = item.icon;
+                    img.enabled = true;
+                }
+                else
+                {
+                    img.enabled = false;
+                }
             }
             else
             {
@@ -123,14 +130,11 @@ public class UIHandler : MonoBehaviour
     {
         HashSet<int> validIDs = new HashSet<int>();
 
-        for (int i = 0; i < cauldron.recipes.GetLength(0); i++)
+        for (int i = 0; i < cauldron.ingredients.Length; i++)
         {
-            for (int j = 0; j < cauldron.recipes.GetLength(1); j++)
-            {
-                int id = cauldron.recipes[i, j];
-                if (id > 0)
-                    validIDs.Add(id);
-            }
+            int id = cauldron.ingredients[i];
+            if (id > 0)
+                validIDs.Add(id);
         }
 
         List<Collectible> validItems = new List<Collectible>();

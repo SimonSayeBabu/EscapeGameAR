@@ -13,9 +13,11 @@ public class SceneController : MonoBehaviour
 
     public PrefabManager prefabManager;
     public ARPlaneManager planeManager;
-
+ 
     private Vector3 centerPosition;
-    private List<Vector3> edgePositions = new List<Vector3>();
+    private List<Vector3> edgePositions = new List<Vector3>();     // 0: Nord, 1: Est, 2: Sud, 3 = Ouest
+    private List<Vector3> cornerPositions = new List<Vector3>();   // 0: NE, 1: SE, 2: SW, 3: NW
+
 
     private void Start()
     {
@@ -108,6 +110,52 @@ public class SceneController : MonoBehaviour
         edgePositions.Add(east ?? centerPosition);
         edgePositions.Add(south ?? centerPosition);
         edgePositions.Add(west ?? centerPosition);
+        
+        // Calcul des coins (NE, SE, SW, NW)
+        cornerPositions.Clear();
+        Vector3? ne = null, se = null, sw = null, nw = null;
+        float maxDistNE = 0f, maxDistSE = 0f, maxDistSW = 0f, maxDistNW = 0f;
+
+        foreach (var plane in planes)
+        {
+            var mesh = plane.GetComponent<MeshFilter>()?.mesh;
+            if (mesh == null) continue;
+
+            foreach (var vertex in mesh.vertices)
+            {
+                Vector3 worldPos = plane.transform.TransformPoint(vertex);
+                float dist = Vector3.Distance(centerPosition, worldPos);
+                if (dist < 0.5f || dist > 3f) continue;
+
+                Vector3 dir = worldPos - centerPosition;
+
+                if (dir.x >= 0 && dir.z >= 0 && dist > maxDistNE)
+                {
+                    ne = worldPos;
+                    maxDistNE = dist;
+                }
+                else if (dir.x >= 0 && dir.z < 0 && dist > maxDistSE)
+                {
+                    se = worldPos;
+                    maxDistSE = dist;
+                }
+                else if (dir.x < 0 && dir.z < 0 && dist > maxDistSW)
+                {
+                    sw = worldPos;
+                    maxDistSW = dist;
+                }
+                else if (dir.x < 0 && dir.z >= 0 && dist > maxDistNW)
+                {
+                    nw = worldPos;
+                    maxDistNW = dist;
+                }
+            }
+        }
+
+        cornerPositions.Add(ne ?? centerPosition);
+        cornerPositions.Add(se ?? centerPosition);
+        cornerPositions.Add(sw ?? centerPosition);
+        cornerPositions.Add(nw ?? centerPosition);
 
         Debug.Log($"Placement data calculated. Center: {centerPosition}, Edge count: {edgePositions.Count}");
     }
@@ -119,8 +167,8 @@ public class SceneController : MonoBehaviour
         if (SceneManager.GetActiveScene().buildIndex == 1)
         {
             Debug.Log("Scene 1 Setup");
-            Instantiate(prefabManager.GetPrefab("TutorialDesk"), centerPosition + Vector3.up * 0.05f, Quaternion.identity);
-            Instantiate(prefabManager.GetPrefab("DoorToStart"), edgePositions[3] + Vector3.up * 0.05f, Quaternion.identity);
+            Instantiate(prefabManager.GetPrefab("TutorialDesk"), centerPosition + Vector3.up * 0.1f, Quaternion.identity);
+            Instantiate(prefabManager.GetPrefab("DoorToStart"), edgePositions[3] + Vector3.up * 0.1f, Quaternion.identity);
 
         }
 
@@ -129,8 +177,8 @@ public class SceneController : MonoBehaviour
             Debug.Log("Scene 2 (Start room) Setup");
             if (edgePositions.Count > 0)
             {
-                Instantiate(prefabManager.GetPrefab("DoorToLabo"), edgePositions[0] + Vector3.up * 0.05f, Quaternion.identity);
-                Instantiate(prefabManager.GetPrefab("DoorToSerre"), edgePositions[2] + Vector3.up * 0.05f, Quaternion.identity);
+                Instantiate(prefabManager.GetPrefab("DoorToLabo"), edgePositions[0] + Vector3.up * 0.1f, Quaternion.identity);
+                Instantiate(prefabManager.GetPrefab("DoorToSerre"), edgePositions[2] + Vector3.up * 0.1f, Quaternion.identity);
             }
         }
         
@@ -139,9 +187,9 @@ public class SceneController : MonoBehaviour
             Debug.Log("Scene 3 (Labo room) Setup");
             if (edgePositions.Count > 0)
             {
-                Instantiate(prefabManager.GetPrefab("DoorToLibrairie"), edgePositions[2] + Vector3.up * 0.05f, Quaternion.identity);
-                Instantiate(prefabManager.GetPrefab("Cauldron"), centerPosition + Vector3.up * 0.05f, Quaternion.identity);
-                Instantiate(prefabManager.GetPrefab("DoorToStart"), edgePositions[0] + Vector3.up * 0.05f, Quaternion.identity);
+                Instantiate(prefabManager.GetPrefab("DoorToLibrairie"), edgePositions[2] + Vector3.up * 0.1f, Quaternion.identity);
+                Instantiate(prefabManager.GetPrefab("Cauldron"), centerPosition + Vector3.up * 0.1f, Quaternion.identity);
+                Instantiate(prefabManager.GetPrefab("DoorToStart"), edgePositions[0] + Vector3.up * 0.1f, Quaternion.identity);
             }
         }
         
@@ -150,7 +198,7 @@ public class SceneController : MonoBehaviour
             Debug.Log("Scene 4 (Librairie room) Setup");
             if (edgePositions.Count > 0)
             {
-                Instantiate(prefabManager.GetPrefab("DoorToLabo"), edgePositions[2] + Vector3.up * 0.05f, Quaternion.identity);
+                Instantiate(prefabManager.GetPrefab("DoorToLabo"), edgePositions[2] + Vector3.up * 0.1f, Quaternion.identity);
             }
         }
         
@@ -159,7 +207,19 @@ public class SceneController : MonoBehaviour
             Debug.Log("Scene 5 (Serre room) Setup");
             if (edgePositions.Count > 0)
             {
-                Instantiate(prefabManager.GetPrefab("DoorToLabo"), edgePositions[0] + Vector3.up * 0.05f, Quaternion.identity);
+                Instantiate(prefabManager.GetPrefab("DoorToStart"), edgePositions[2] + Vector3.up * 0.1f, Quaternion.identity);
+                Instantiate(prefabManager.GetPrefab("DoorToUnderground"), edgePositions[1] + Vector3.up * 0.1f, Quaternion.identity);
+            }
+        }
+        
+        if (SceneManager.GetActiveScene().buildIndex == 6)
+        {
+            Debug.Log("Scene 6 (Underground room) Setup");
+            if (edgePositions.Count > 0)
+            {
+                Instantiate(prefabManager.GetPrefab("DoorToSerreBis"), edgePositions[1] + Vector3.up * 0.1f, Quaternion.identity);
+                Instantiate(prefabManager.GetPrefab("EnigmeValve"), centerPosition + Vector3.up * 0.1f, Quaternion.identity);
+                Instantiate(prefabManager.GetPrefab("Mushroom Planter"), edgePositions[2] + Vector3.up * 0.1f, Quaternion.identity);
             }
         }
     }

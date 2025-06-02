@@ -9848,7 +9848,7 @@ BoxCollider:
     m_Bits: 0
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
-  m_ProvidesContacts: 0
+  m_ProvidesContacts: 1
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 1.1401882, y: 0.98388827, z: 1.0185337}
@@ -9878,7 +9878,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 122
   m_CollisionDetection: 0
 --- !u!114 &395632128501295685
 MonoBehaviour:
@@ -9893,6 +9893,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: 3e21445c35ecbca4d901af2ae817e6d7, type: 2}
+  ingredients: 140000000b0000000c0000000f000000150000000d0000000e0000000a00000015000000
+  uiHandler: {fileID: 0}
   resultat1: {fileID: 1539688957292056691, guid: f63df71161fd98c4191fdbc25700aa62, type: 3}
   resultat2: {fileID: 9094967195158229417, guid: 572738c4d0599f548bfb81c7f67b7c39, type: 3}
   bulles: {fileID: 7109042071675776280}

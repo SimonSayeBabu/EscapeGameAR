@@ -7,6 +7,7 @@ public class Cauldron : MonoBehaviour, Interactible
     private int currentStep;
     private int activeRecipe = -1;
     public int[,] recipes = {{20,11,15,0,0},{20,10,12,21,0}};
+    public int[] ingredients = {20,11,12,15,21,13,14,10,21};
     //Recipe 1 : Growth potion = Water, Red mushroom, Pale mushroom
     //Recipe 2 : Objective = Water, Brown mushroom, White mushroom, Special plant
     public UIHandler uiHandler;
