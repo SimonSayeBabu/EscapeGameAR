@@ -68,8 +68,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   txt: Insert Text Here
-  isImage: 0
-  image: {fileID: 21300000, guid: 9925053ca48834643970f11e8fd75435, type: 3}
+  isImage: 1
+  image: {fileID: 21300000, guid: 4150b0baec662fa4699b75853abac903, type: 3}
 --- !u!1001 &227755621184974978
 PrefabInstance:
   m_ObjectHideFlags: 0

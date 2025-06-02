@@ -68,8 +68,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   txt: 
-  isImage: 0
-  image: {fileID: 21300000, guid: 2744517b8f5919e40b9abdf11cc4c018, type: 3}
+  isImage: 1
+  image: {fileID: 21300000, guid: aaaec7b15805e094d9efce810e278261, type: 3}
 --- !u!1001 &4603450293837710657
 PrefabInstance:
   m_ObjectHideFlags: 0
