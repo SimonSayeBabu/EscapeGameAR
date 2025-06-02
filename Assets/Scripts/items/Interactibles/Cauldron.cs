@@ -29,7 +29,6 @@ public class Cauldron : MonoBehaviour, Interactible
         fumee.Stop();
         mainBulles = bulles.main;
         mainFumee = fumee.main;
-        finishRecipe(1);
     }
 
     // Update is called once per frame
