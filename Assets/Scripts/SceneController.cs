@@ -208,6 +208,8 @@ public class SceneController : MonoBehaviour
             if (edgePositions.Count > 0)
             {
                 Instantiate(prefabManager.GetPrefab("DoorToStart"), edgePositions[2] + Vector3.up * 0.1f, Quaternion.identity);
+                Instantiate(prefabManager.GetPrefab("WaterWell"), cornerPositions[2] + Vector3.up * 0.1f, Quaternion.identity);
+                Instantiate(prefabManager.GetPrefab("WaterWell"), cornerPositions[3] + Vector3.up * 0.1f, Quaternion.identity);
                 Instantiate(prefabManager.GetPrefab("DoorToUnderground"), edgePositions[1] + Vector3.up * 0.1f, Quaternion.identity);
             }
         }
