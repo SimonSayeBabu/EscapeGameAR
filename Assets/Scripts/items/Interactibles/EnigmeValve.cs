@@ -7,11 +7,12 @@ public class EnigmeValve : MonoBehaviour
     private int[] valves = new int[6];
     private int[] correctValves = { 1, 2 };
     private bool serumStatus = false;
+    private SceneController sceneController;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        sceneController = FindAnyObjectByType<SceneController>();
     }
 
     // Update is called once per frame
@@ -50,6 +51,7 @@ public class EnigmeValve : MonoBehaviour
     public void setSerum(bool s)
     {
         serumStatus = s;
+        sceneController.isUndergroundPuzzleSolved = s;
     }
 
     public bool getSerumStatus()

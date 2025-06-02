@@ -9,16 +9,18 @@ public class Plantes : MonoBehaviour
     public GameObject collectible;
     private Vector3 initialVector;
     private bool isFinished = false;
+    private SceneController sceneController;
     // Start is called before the first frame update
     void Start()
     {
         initialVector = plantes[0].transform.localScale;
+        sceneController = FindAnyObjectByType<SceneController>();
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        updateStatus(sceneController.solvedTubes, sceneController.isUndergroundPuzzleSolved);
     }
 
     private void setFernScale(int scale)

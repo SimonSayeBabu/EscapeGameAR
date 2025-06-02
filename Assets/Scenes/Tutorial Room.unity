@@ -4000,6 +4000,7 @@ MonoBehaviour:
   - {fileID: 7080033797570721559, guid: cfc9f7f11080a37488f4d4bb3dcdbbd1, type: 3}
   - {fileID: 7653734768999347371, guid: 522143c0628c32640b3d57fbcdd357ec, type: 3}
   - {fileID: 6978411872668479667, guid: f7544efda038e7a408a42dfc37f5279e, type: 3}
+  - {fileID: 8372678126917571621, guid: ac50aef3f677f0a4f8c34df7a674b66e, type: 3}
 --- !u!4 &687669633
 Transform:
   m_ObjectHideFlags: 0
@@ -5216,6 +5217,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isSetupDone: 0
   isUndergroundPuzzleSolved: 0
+  solvedTubes: 0
   prefabManager: {fileID: 687669632}
   planeManager: {fileID: 1976408496}
 --- !u!4 &1163886978

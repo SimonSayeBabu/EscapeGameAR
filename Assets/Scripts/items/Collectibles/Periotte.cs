@@ -5,7 +5,9 @@ using UnityEngine;
 public class Periotte : MonoBehaviour, Collectible
 {
     public int id { get; set; } = 21;
+    public bool active { get; set; } = true;
     [SerializeField] private Sprite _icon;
+    
     public Sprite icon
     {
         get => _icon ?? Resources.Load<Sprite>("sprite/missing_texture");
