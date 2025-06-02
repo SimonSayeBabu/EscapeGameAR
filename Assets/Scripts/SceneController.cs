@@ -198,7 +198,7 @@ public class SceneController : MonoBehaviour
             if (edgePositions.Count > 0)
             {
                 Instantiate(prefabManager.GetPrefab("DoorToLibrairie"), edgePositions[2] + Vector3.up * 0.1f, GetRotationTowardsCenter(edgePositions[2]));
-                Instantiate(prefabManager.GetPrefab("Cauldron"), centerPosition + Vector3.up * 0.1f, Quaternion.identity);
+                Instantiate(prefabManager.GetPrefab("Cauldron"), centerPosition + Vector3.up * 0.3f, Quaternion.identity);
                 Instantiate(prefabManager.GetPrefab("DoorToStart"), edgePositions[0] + Vector3.up * 0.1f, GetRotationTowardsCenter(edgePositions[0]));
             }
         }
@@ -208,6 +208,7 @@ public class SceneController : MonoBehaviour
             Debug.Log("Scene 4 (Librairie room) Setup");
             if (edgePositions.Count > 0)
             {
+                Instantiate(prefabManager.GetPrefab("LibraryDesks"), centerPosition + Vector3.up * 0.1f, Quaternion.identity);
                 Instantiate(prefabManager.GetPrefab("DoorToLabo"), edgePositions[2] + Vector3.up * 0.1f, GetRotationTowardsCenter(edgePositions[2]));
                 Instantiate(prefabManager.GetPrefab("BookShelf1"), edgePositions[3] + Vector3.up * 0.1f, GetRotationTowardsCenter(edgePositions[3]));
                 Instantiate(prefabManager.GetPrefab("BookShelf2"), edgePositions[0] + Vector3.up * 0.1f, GetRotationTowardsCenter(edgePositions[0]));
@@ -226,8 +227,8 @@ public class SceneController : MonoBehaviour
             {
                 Instantiate(prefabManager.GetPrefab("PlantesSerreEnigme"), centerPosition + Vector3.up * 0.1f, Quaternion.identity);
                 Instantiate(prefabManager.GetPrefab("DoorToStart"), edgePositions[2] + Vector3.up * 0.1f, GetRotationTowardsCenter(edgePositions[2]));
-                Instantiate(prefabManager.GetPrefab("WaterWell"), cornerPositions[2] + Vector3.up * 0.1f, Quaternion.identity);
-                Instantiate(prefabManager.GetPrefab("TreePrefab"), cornerPositions[0] + Vector3.up * 0.1f, Quaternion.identity);
+                Instantiate(prefabManager.GetPrefab("WaterWell"), cornerPositions[3] + Vector3.up * 0.1f, Quaternion.identity);
+                Instantiate(prefabManager.GetPrefab("TreePrefab"), cornerPositions[2] + Vector3.up * 0.1f, Quaternion.identity);
                 Instantiate(prefabManager.GetPrefab("DoorToUnderground"), edgePositions[1] + Vector3.up * 0.1f, GetRotationTowardsCenter(edgePositions[1]));
             }
         }

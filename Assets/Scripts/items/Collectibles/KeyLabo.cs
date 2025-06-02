@@ -1,10 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Serum : MonoBehaviour, Collectible
+public class KeyLabo : MonoBehaviour, Collectible
 {
-    public int id { get; set; } = 30;
+    public int id { get; set; } = 3;
     public bool active { get; set; } = true;
     [SerializeField] private Sprite _icon;
     public Sprite icon

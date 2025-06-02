@@ -12,6 +12,7 @@ public class Cauldron : MonoBehaviour, Interactible
     //Recipe 2 : Objective = Water, Brown mushroom, White mushroom, Special plant
     public UIHandler uiHandler;
     private bool cooldown;
+    
     public GameObject resultat1;
     public GameObject resultat2;
 
@@ -159,11 +160,11 @@ public class Cauldron : MonoBehaviour, Interactible
         recipes[recipe, 0] = -1;
         if (recipe == 0)
         {
-            Instantiate(resultat1, new Vector3(this.transform.position.x, this.transform.position.y + 0.75f, this.transform.position.z), Quaternion.Euler(0, 0, 0));
+            Instantiate(resultat1, new Vector3(this.transform.position.x, this.transform.position.y + 0.75f, this.transform.position.z), Quaternion.identity);
         }
         else if (recipe == 1)
         {
-            Instantiate(resultat2, new Vector3(this.transform.position.x, this.transform.position.y + 0.75f, this.transform.position.z), Quaternion.Euler(0, 0, 0));
+            Instantiate(resultat2, new Vector3(this.transform.position.x, this.transform.position.y + 0.75f, this.transform.position.z), Quaternion.identity);
         }
         cooldown = true;
     }

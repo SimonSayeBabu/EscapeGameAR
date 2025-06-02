@@ -13,6 +13,7 @@ public class EnigmeValve : MonoBehaviour
     void Start()
     {
         sceneController = FindAnyObjectByType<SceneController>();
+        serumStatus = sceneController.isUndergroundPuzzleSolved;
     }
 
     // Update is called once per frame
@@ -37,6 +38,8 @@ public class EnigmeValve : MonoBehaviour
         {
             valves[n - 1] = v;
         }
+
+        sceneController.solvedTubes = nbCorrectValves();
     }
 
     public bool isOpen()
@@ -64,7 +67,7 @@ public class EnigmeValve : MonoBehaviour
         return valves[valve - 1] == 1;
     }
 
-    public int nbCorrectValves()
+    private int nbCorrectValves()
     {
         int ret = 0;
         if (valves[correctValves[0]] == 1)

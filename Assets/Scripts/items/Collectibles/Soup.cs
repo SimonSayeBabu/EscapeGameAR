@@ -5,6 +5,7 @@ using UnityEngine;
 public class Soup : MonoBehaviour, Collectible
 {
     public int id { get; set; } = 31;
+    public bool active { get; set; } = true;
     [SerializeField] private Sprite _icon;
     public Sprite icon
     {
