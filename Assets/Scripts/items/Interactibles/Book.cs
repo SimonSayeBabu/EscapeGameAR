@@ -4,28 +4,40 @@ using UnityEngine;
 public class Book : MonoBehaviour, Interactible
 {
 
-    private UIHandler  uiHandler;
+    public UIHandler  uiHandler;
     public string txt;
     public bool isImage;
     public Sprite image;
     
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        uiHandler = FindAnyObjectByType<UIHandler>();
+        Debug.Log($"[Book] Awake called on {gameObject.name}");
     }
 
-    // Update is called once per frame
-    void Update()
+    void Start()
     {
-
+        Debug.Log($"[Book] Start called on {gameObject.name}");
+        uiHandler = FindAnyObjectByType<UIHandler>();
+        if (uiHandler == null)
+        {
+            Debug.LogError("[Book] No UIHandler found!");
+        }
+        else
+        {
+            Debug.Log("[Book] UIHandler successfully assigned");
+        }
     }
     
     public void Interact(Inventory playerInventory)
     {
+        if (!uiHandler)
+        {
+            Debug.LogError("UIHandler is NULL in Book.Interact()");
+            return;
+        }
+
         if (isImage)
         {
-            Debug.Log(isImage);
             uiHandler.ShowBook(image);
         }
         else

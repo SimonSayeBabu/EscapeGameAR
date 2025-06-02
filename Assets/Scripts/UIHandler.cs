@@ -42,11 +42,6 @@ public class UIHandler : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-    }
-    
     public void ButtonEndSetup()
     {
         PlaneController.StopPlaneDetection();
@@ -82,7 +77,7 @@ public class UIHandler : MonoBehaviour
 
     public void ButtonBookClick()
     {
-        controller.PlacedPrefab = prefabManager.GetPrefab("Indice");
+        controller.PlacedPrefab = prefabManager.GetPrefab("TemplateBook");
     }
 
     public void ShowUI()
@@ -158,7 +153,7 @@ public class UIHandler : MonoBehaviour
                 img.sprite = item.icon;
                 img.enabled = true;
 
-                int id = item.id; //UTILISE çA
+                int id = item.id; 
                 btn.onClick.RemoveAllListeners();
                 btn.onClick.AddListener(() => {
                     cauldron.addItem(id);
@@ -171,11 +166,11 @@ public class UIHandler : MonoBehaviour
             }
         }
     }
-
-
+    
     public void ShowBook(string content)
     {
         bookImg.gameObject.SetActive(false);
+        bookTxt.gameObject.SetActive(true); 
         bookTxt.text = content;
         BookPanel.SetActive(true);
     }
@@ -183,12 +178,16 @@ public class UIHandler : MonoBehaviour
     public void ShowBook(Sprite image)
     {
         bookTxt.gameObject.SetActive(false);
+        bookImg.gameObject.SetActive(true); 
         bookImg.sprite = image;
         BookPanel.SetActive(true);
     }
-
+    
     public void HideBook()
     {
+        bookTxt.gameObject.SetActive(false);
+        bookImg.gameObject.SetActive(false);
         BookPanel.SetActive(false);
     }
+
 }

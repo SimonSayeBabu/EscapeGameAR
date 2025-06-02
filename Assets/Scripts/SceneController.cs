@@ -160,6 +160,14 @@ public class SceneController : MonoBehaviour
         Debug.Log($"Placement data calculated. Center: {centerPosition}, Edge count: {edgePositions.Count}");
     }
 
+    Quaternion GetRotationTowardsCenter(Vector3 fromPosition)
+    {
+        Vector3 direction = (centerPosition - fromPosition).normalized;
+        if (direction == Vector3.zero)
+            return Quaternion.identity;
+
+        return Quaternion.LookRotation(direction);
+    }
 
     public void Setup()
     {
@@ -177,8 +185,9 @@ public class SceneController : MonoBehaviour
             Debug.Log("Scene 2 (Start room) Setup");
             if (edgePositions.Count > 0)
             {
-                Instantiate(prefabManager.GetPrefab("DoorToLabo"), edgePositions[0] + Vector3.up * 0.1f, Quaternion.identity);
-                Instantiate(prefabManager.GetPrefab("DoorToSerre"), edgePositions[2] + Vector3.up * 0.1f, Quaternion.identity);
+                Instantiate(prefabManager.GetPrefab("DoorToLabo"), edgePositions[0] + Vector3.up * 0.1f, GetRotationTowardsCenter(edgePositions[0]));
+                Instantiate(prefabManager.GetPrefab("Intro Table"), centerPosition + Vector3.up * 0.1f, Quaternion.identity);
+                Instantiate(prefabManager.GetPrefab("DoorToSerre"), edgePositions[2] + Vector3.up * 0.1f, GetRotationTowardsCenter(edgePositions[2]));
             }
         }
         
@@ -187,9 +196,9 @@ public class SceneController : MonoBehaviour
             Debug.Log("Scene 3 (Labo room) Setup");
             if (edgePositions.Count > 0)
             {
-                Instantiate(prefabManager.GetPrefab("DoorToLibrairie"), edgePositions[2] + Vector3.up * 0.1f, Quaternion.identity);
+                Instantiate(prefabManager.GetPrefab("DoorToLibrairie"), edgePositions[2] + Vector3.up * 0.1f, GetRotationTowardsCenter(edgePositions[2]));
                 Instantiate(prefabManager.GetPrefab("Cauldron"), centerPosition + Vector3.up * 0.1f, Quaternion.identity);
-                Instantiate(prefabManager.GetPrefab("DoorToStart"), edgePositions[0] + Vector3.up * 0.1f, Quaternion.identity);
+                Instantiate(prefabManager.GetPrefab("DoorToStart"), edgePositions[0] + Vector3.up * 0.1f, GetRotationTowardsCenter(edgePositions[0]));
             }
         }
         
@@ -198,7 +207,14 @@ public class SceneController : MonoBehaviour
             Debug.Log("Scene 4 (Librairie room) Setup");
             if (edgePositions.Count > 0)
             {
-                Instantiate(prefabManager.GetPrefab("DoorToLabo"), edgePositions[2] + Vector3.up * 0.1f, Quaternion.identity);
+                Instantiate(prefabManager.GetPrefab("DoorToLabo"), edgePositions[2] + Vector3.up * 0.1f, GetRotationTowardsCenter(edgePositions[2]));
+                Instantiate(prefabManager.GetPrefab("BookShelf1"), edgePositions[3] + Vector3.up * 0.1f, GetRotationTowardsCenter(edgePositions[3]));
+                Instantiate(prefabManager.GetPrefab("BookShelf2"), edgePositions[0] + Vector3.up * 0.1f, GetRotationTowardsCenter(edgePositions[0]));
+                Instantiate(prefabManager.GetPrefab("BookShelf3"), edgePositions[1] + Vector3.up * 0.1f, GetRotationTowardsCenter(edgePositions[1]));
+                Instantiate(prefabManager.GetPrefab("Column"), cornerPositions[0] + Vector3.up * 0.1f, Quaternion.identity);
+                Instantiate(prefabManager.GetPrefab("Column"), cornerPositions[1] + Vector3.up * 0.1f, Quaternion.identity);
+                Instantiate(prefabManager.GetPrefab("Column"), cornerPositions[2] + Vector3.up * 0.1f, Quaternion.identity);
+                Instantiate(prefabManager.GetPrefab("Column"), cornerPositions[3] + Vector3.up * 0.1f, Quaternion.identity);
             }
         }
         
@@ -207,10 +223,10 @@ public class SceneController : MonoBehaviour
             Debug.Log("Scene 5 (Serre room) Setup");
             if (edgePositions.Count > 0)
             {
-                Instantiate(prefabManager.GetPrefab("DoorToStart"), edgePositions[2] + Vector3.up * 0.1f, Quaternion.identity);
+                Instantiate(prefabManager.GetPrefab("DoorToStart"), edgePositions[2] + Vector3.up * 0.1f, GetRotationTowardsCenter(edgePositions[2]));
                 Instantiate(prefabManager.GetPrefab("WaterWell"), cornerPositions[2] + Vector3.up * 0.1f, Quaternion.identity);
-                Instantiate(prefabManager.GetPrefab("WaterWell"), cornerPositions[3] + Vector3.up * 0.1f, Quaternion.identity);
-                Instantiate(prefabManager.GetPrefab("DoorToUnderground"), edgePositions[1] + Vector3.up * 0.1f, Quaternion.identity);
+                Instantiate(prefabManager.GetPrefab("TreePrefab"), cornerPositions[0] + Vector3.up * 0.1f, Quaternion.identity);
+                Instantiate(prefabManager.GetPrefab("DoorToUnderground"), edgePositions[1] + Vector3.up * 0.1f, GetRotationTowardsCenter(edgePositions[1]));
             }
         }
         
@@ -219,7 +235,7 @@ public class SceneController : MonoBehaviour
             Debug.Log("Scene 6 (Underground room) Setup");
             if (edgePositions.Count > 0)
             {
-                Instantiate(prefabManager.GetPrefab("DoorToSerreBis"), edgePositions[1] + Vector3.up * 0.1f, Quaternion.identity);
+                Instantiate(prefabManager.GetPrefab("DoorToSerreBis"), edgePositions[1] + Vector3.up * 0.1f, GetRotationTowardsCenter(edgePositions[1]));
                 Instantiate(prefabManager.GetPrefab("EnigmeValve"), centerPosition + Vector3.up * 0.1f, Quaternion.identity);
                 Instantiate(prefabManager.GetPrefab("Mushroom Planter"), edgePositions[2] + Vector3.up * 0.1f, Quaternion.identity);
             }

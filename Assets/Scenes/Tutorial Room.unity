@@ -2371,6 +2371,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a09d287fae992a0409b240a615de6ecf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  placedPrefab: {fileID: 0}
   sceneController: {fileID: 0}
   UIHandler: {fileID: 1582481669}
   arCamera: {fileID: 26056319}
@@ -3984,7 +3985,6 @@ MonoBehaviour:
   - {fileID: 6051919602199239627, guid: 621649416dbc1fe45bbc7fcdd6510a26, type: 3}
   - {fileID: 3883965100296620846, guid: 9d307b34c9d465e479664d70d2e85a1c, type: 3}
   - {fileID: 1986210785927229176, guid: c5939a0909c7f8c4899cda638c53ed52, type: 3}
-  - {fileID: 8501060156457221434, guid: 123c4d6a450a2394faeaf40dd4c37df5, type: 3}
   - {fileID: 7423626946419131263, guid: 4299ccaee35525f40850a1a509611882, type: 3}
   - {fileID: 6318489058494417933, guid: 352f0b96b0e05854d8d454bb5d5cc862, type: 3}
   - {fileID: 6318489058494417933, guid: d404b9aaa4a8f874f99e50f9018145a0, type: 3}
@@ -3993,6 +3993,13 @@ MonoBehaviour:
   - {fileID: 1959974133814541294, guid: 00b107c10c6e7da4388bc7569d7204a0, type: 3}
   - {fileID: 4500925230678613799, guid: 100693bd929169841893f95b65372dd0, type: 3}
   - {fileID: 2617132415241644007, guid: 3b6b9fc73474a714ca43ddbbd5fbc9dc, type: 3}
+  - {fileID: 100002, guid: f8d07adaadbd84b448d6c731458513ac, type: 3}
+  - {fileID: 2273117455219566683, guid: b9aa0e6944f86c24ca4f00275c66ba8b, type: 3}
+  - {fileID: 6792322118569682399, guid: a1a894e458b374246ad919a19a210dae, type: 3}
+  - {fileID: 7080033797570721559, guid: 2a94a7d9fb35f3743aa58b7ab6696e8e, type: 3}
+  - {fileID: 7080033797570721559, guid: cfc9f7f11080a37488f4d4bb3dcdbbd1, type: 3}
+  - {fileID: 7653734768999347371, guid: 522143c0628c32640b3d57fbcdd357ec, type: 3}
+  - {fileID: 6978411872668479667, guid: f7544efda038e7a408a42dfc37f5279e, type: 3}
 --- !u!4 &687669633
 Transform:
   m_ObjectHideFlags: 0
@@ -5708,14 +5715,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 7c76fa3fb2112054d974d2a437342c5c, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1

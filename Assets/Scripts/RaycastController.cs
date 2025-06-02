@@ -2,24 +2,27 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
+using UnityEngine.XR.ARSubsystems;
 
 [RequireComponent(typeof(ARRaycastManager))]
 public class RaycastController : MonoBehaviour
 {
-    private GameObject placedPrefab;
-    
+    [SerializeField] private GameObject placedPrefab;
+
     public SceneController sceneController;
     public UIHandler UIHandler;
     public Camera arCamera;
     public Inventory inventory;
-    
+
     private ARRaycastManager arRaycastManager;
-    static List<ARRaycastHit> hits = new List<ARRaycastHit>();
-    public float holdTime;
-    private bool isTapped;
-    private float timeSinceLastTap;
-    public float interactionCooldown = 0.5f; 
+    private static readonly List<ARRaycastHit> hits = new();
+
+    public float holdTime = 0.5f;
+    public float interactionCooldown = 0.5f;
+
     private float lastInteractionTime = -Mathf.Infinity;
+    private float timeSinceLastTap;
+    private bool isTapped;
 
     public GameObject PlacedPrefab
     {
@@ -27,21 +30,113 @@ public class RaycastController : MonoBehaviour
         set => placedPrefab = value;
     }
 
-    void Start()
-    {
-        DontDestroyOnLoad(gameObject);
-        sceneController = FindAnyObjectByType<SceneController>();
-        inventory = FindAnyObjectByType<Inventory>();
-        UIHandler = FindAnyObjectByType<UIHandler>();
-        UIHandler.UpdateInv(inventory);
-    }
-
     void Awake()
     {
         arRaycastManager = GetComponent<ARRaycastManager>();
     }
 
-    bool TryGetTouchPosition(out Vector2 touchPosition)
+    void Start()
+    {
+        DontDestroyOnLoad(gameObject);
+
+        sceneController = FindAnyObjectByType<SceneController>();
+        inventory = FindAnyObjectByType<Inventory>();
+        UIHandler = FindAnyObjectByType<UIHandler>();
+
+        if (UIHandler == null)
+            Debug.LogError("[RaycastController] UIHandler not found!");
+        else
+            UIHandler.UpdateInv(inventory);
+    }
+
+    void Update()
+    {
+        if (Time.time - lastInteractionTime < interactionCooldown)
+            return;
+
+        if (!TryGetTouchPosition(out Vector2 touchPosition) || !sceneController.isSetupDone)
+            return;
+
+        if (Input.touchCount > 0)
+        {
+            Touch touch = Input.GetTouch(0);
+            IsTappedSet(touch);
+
+            if (isTapped)
+            {
+                Ray ray = arCamera.ScreenPointToRay(touch.position);
+                if (Physics.Raycast(ray, out RaycastHit hit))
+                {
+                    var interactible = hit.transform.GetComponentInParent<Interactible>();
+                    var collectible = hit.transform.GetComponentInParent<Collectible>();
+
+                    if (interactible != null)
+                    {
+                        TouchInteractible(interactible);
+                    }
+                    else if (collectible != null)
+                    {
+                        TouchCollectible(collectible);
+                    }
+                    else
+                    {
+                        TryPlacePrefab(touchPosition); // ➕ UNIQUEMENT si rien d'autre touché
+                    }
+
+                    UIHandler?.UpdateInv(inventory);
+                }
+                else
+                {
+                    // ➕ Cas où rien n’a été touché par le Physics.Raycast, donc on tente un ARRaycast
+                    TryPlacePrefab(touchPosition);
+                }
+
+            }
+        }
+    }
+
+    private void TryPlacePrefab(Vector2 touchPosition)
+    {
+        if (arRaycastManager.Raycast(touchPosition, hits, TrackableType.PlaneWithinPolygon) &&
+            (Time.time - timeSinceLastTap <= holdTime))
+        {
+            Pose hitPose = hits[0].pose;
+            Instantiate(placedPrefab, hitPose.position + Vector3.up, hitPose.rotation);
+        }
+    }
+
+    private void TouchCollectible(Collectible target)
+    {
+        if (Time.time - timeSinceLastTap >= holdTime)
+        {
+            if (inventory.contains(target.id) == -1)
+            {
+                inventory.addItem(target.Collect());
+                lastInteractionTime = Time.time;
+            }
+        }
+    }
+
+    private void TouchInteractible(Interactible target)
+    {
+        if (Time.time - timeSinceLastTap >= holdTime)
+        {
+            target.LongInteract(inventory);
+        }
+        else
+        {
+            if (target is Book book && book.uiHandler == null)
+            {
+                book.uiHandler = UIHandler;
+            }
+
+            target.Interact(inventory);
+        }
+
+        lastInteractionTime = Time.time;
+    }
+
+    private bool TryGetTouchPosition(out Vector2 touchPosition)
     {
         if (Input.touchCount > 0)
         {
@@ -50,86 +145,7 @@ public class RaycastController : MonoBehaviour
         }
 
         touchPosition = default;
-
         return false;
-    }
-
-    void Update()
-    {
-        if (Time.time - lastInteractionTime < interactionCooldown)
-            return;
-        if (!TryGetTouchPosition(out Vector2 touchPosition) || !sceneController.isSetupDone) return;
-        if (Input.touchCount > 0)
-        {
-            Touch touch = Input.GetTouch(0);
-            IsTappedSet(touch);
-            if (isTapped)
-            {
-                touchPosition = touch.position;
-                Ray ray = arCamera.ScreenPointToRay(touch.position);
-                RaycastHit hitObject;
-
-                if (Physics.Raycast(ray, out hitObject))
-                {
-                    MonoBehaviour ObjectTouched = hitObject.transform.GetComponent<MonoBehaviour>();
-                    Debug.Log(ObjectTouched.GetType());
-                    switch (ObjectTouched)
-                    {
-                        case Interactible:
-                        {
-                            TouchInteractible(ObjectTouched);
-                            break;
-                        }
-                        case Collectible:
-                        {
-                            Debug.Log("collectible");
-                            TouchCollectible(ObjectTouched);
-                            break;
-                        }
-                        default:
-                        {
-                            if (arRaycastManager.Raycast(touchPosition, hits, UnityEngine.XR.ARSubsystems.TrackableType.PlaneWithinPolygon) && (Time.time - timeSinceLastTap <= holdTime))
-                            {
-                                var hitPose = hits[0].pose;
-                                Instantiate(placedPrefab, hitPose.position+Vector3.up, hitPose.rotation);
-                            }
-                            break;
-                        }
-                    }
-                    UIHandler.UpdateInv(inventory);
-                }
-            }
-        }
-    }
-
-    private void TouchCollectible(MonoBehaviour ObjectTouched)
-    {
-        if (Time.time - timeSinceLastTap >= holdTime)
-        {
-            Collectible CollectedObject = (Collectible)ObjectTouched;
-
-            if (inventory.contains(CollectedObject.id) == -1)
-            {
-                inventory.addItem(CollectedObject.Collect());
-                lastInteractionTime = Time.time;
-            }
-        }
-    }
-
-
-    private void TouchInteractible(MonoBehaviour ObjectTouched)
-    {
-        Interactible InteractedObject = (Interactible)ObjectTouched;
-        if (Time.time - timeSinceLastTap >= holdTime)
-        {
-            InteractedObject.LongInteract();
-        }
-        else
-        {
-            InteractedObject.Interact(this.inventory);
-        }
-
-        lastInteractionTime = Time.time;
     }
 
     private void IsTappedSet(Touch touch)
@@ -144,14 +160,9 @@ public class RaycastController : MonoBehaviour
                 isTapped = false;
                 timeSinceLastTap = 0f;
                 break;
-            case TouchPhase.Moved:
-                break;
-            case TouchPhase.Stationary:
-                break;
             case TouchPhase.Canceled:
+                isTapped = false;
                 break;
-            default:
-                throw new ArgumentOutOfRangeException();
         }
     }
 }
