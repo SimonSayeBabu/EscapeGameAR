@@ -593,6 +593,7 @@ MonoBehaviour:
   - {fileID: 2074621991870974475}
   - {fileID: 7770717298810587753}
   - {fileID: 7768428935496119104}
+  collectible: {fileID: 2850842342177211564, guid: 6458dd837ee48ae40a528cb3974375ea, type: 3}
 --- !u!1001 &623935682003506459
 PrefabInstance:
   m_ObjectHideFlags: 0

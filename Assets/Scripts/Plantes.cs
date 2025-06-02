@@ -14,6 +14,7 @@ public class Plantes : MonoBehaviour
     {
         initialVector = plantes[0].transform.localScale;
         setFernScale(50);
+        updateStatus();
     }
 
     // Update is called once per frame
@@ -42,7 +43,7 @@ public class Plantes : MonoBehaviour
     public void updateStatus()
     {
         //SceneManager pour recuperer le nombre de tuyaux OK et le statut du serum
-        int tuyau = 0;
+        int tuyau = 2;
         bool serum = true;
         if (!isFinished & serum)
         {
