@@ -174,7 +174,7 @@ public class UIHandler : MonoBehaviour
                 int id = item.id; //UTILISE çA
                 btn.onClick.RemoveAllListeners();
                 btn.onClick.AddListener(() => {
-                    // ICI POUR INTERAGIR AVEC ITEM 
+                    cauldron.addItem(id);
                 });
             }
             else
