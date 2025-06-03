@@ -9,10 +9,12 @@ public class Door: MonoBehaviour, Interactible
     public int sceneID;
     public int keyID;
     private SceneController sceneController;
+    private UIHandler uiHandler;
     // Start is called before the first frame update
     void Start()
     {
         sceneController = FindAnyObjectByType<SceneController>();
+        uiHandler = FindAnyObjectByType<UIHandler>();
     }
 
     // Update is called once per frame
@@ -28,6 +30,10 @@ public class Door: MonoBehaviour, Interactible
             {
                 playerInventory.content[playerInventory.contains(keyID)].active = false;
                 sceneController.SwitchScenes(sceneID);
+            }
+            else
+            {
+                uiHandler.showDoorLocked();
             }
             
         }

@@ -425,6 +425,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   side: 1
   isLocked: 0
+  openAngle: 120
+  animationDuration: 0.5
 --- !u!54 &5069501665982789173
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -769,7 +771,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   side: -1
-  isLocked: 1
+  isLocked: 0
+  openAngle: 120
+  animationDuration: 0.5
 --- !u!54 &3187095252353450944
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1487,7 +1491,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   side: -1
-  isLocked: 1
+  isLocked: 0
+  openAngle: 120
+  animationDuration: 0.5
 --- !u!54 &8654377241845912458
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1703,6 +1709,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   side: 1
   isLocked: 0
+  openAngle: 120
+  animationDuration: 0.5
 --- !u!54 &1331426009358558847
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1831,11 +1839,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2879635783637682878, guid: fc544dd44651c61438cf373e9eb8c2ef, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.1984
+      value: 0.433
       objectReference: {fileID: 0}
     - target: {fileID: 2879635783637682878, guid: fc544dd44651c61438cf373e9eb8c2ef, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.3825
+      value: 0.334
       objectReference: {fileID: 0}
     - target: {fileID: 2879635783637682878, guid: fc544dd44651c61438cf373e9eb8c2ef, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1893,7 +1901,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 473006, guid: d0e39f206f1e4ca082d2fd38f5475d00, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.7400003
+      value: 0.83100027
       objectReference: {fileID: 0}
     - target: {fileID: 473006, guid: d0e39f206f1e4ca082d2fd38f5475d00, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1964,7 +1972,7 @@ BoxCollider:
     m_Bits: 0
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
-  m_ProvidesContacts: 0
+  m_ProvidesContacts: 1
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 0.18150711, y: 0.2623037, z: 0.18150711}
@@ -1979,7 +1987,7 @@ Rigidbody:
   serializedVersion: 4
   m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0.15
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -2014,7 +2022,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 432158, guid: b29b15951e3f4f2f83b65c4b43aff9d2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.748
+      value: 0.90599996
       objectReference: {fileID: 0}
     - target: {fileID: 432158, guid: b29b15951e3f4f2f83b65c4b43aff9d2, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2085,11 +2093,11 @@ BoxCollider:
     m_Bits: 0
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
-  m_ProvidesContacts: 0
+  m_ProvidesContacts: 1
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.21904945, y: 0.00000003562309, z: 0.2774706}
-  m_Center: {x: -0.0000009536743, y: 0.0022017588, z: 0.00000047683716}
+  m_Size: {x: 0.21904945, y: 0.023374796, z: 0.2774706}
+  m_Center: {x: -0.0000009536743, y: 0.0054851174, z: 0.00000047683716}
 --- !u!54 &3214032445212767133
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2100,7 +2108,7 @@ Rigidbody:
   serializedVersion: 4
   m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0.15
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -2135,7 +2143,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 425586, guid: d8c1ecd27d8b494f99c904bd9a3be8bf, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.74
+      value: 0.90599996
       objectReference: {fileID: 0}
     - target: {fileID: 425586, guid: d8c1ecd27d8b494f99c904bd9a3be8bf, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2201,11 +2209,11 @@ BoxCollider:
     m_Bits: 0
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
-  m_ProvidesContacts: 0
+  m_ProvidesContacts: 1
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.21537018, y: 0.000000035157427, z: 0.2774706}
-  m_Center: {x: -0.0000009536743, y: 0.0022017737, z: 0.00000047683716}
+  m_Size: {x: 0.21537018, y: 0.015430905, z: 0.2774706}
+  m_Center: {x: -0.0000009536743, y: 0.009917211, z: 0.00000047683716}
 --- !u!54 &399205129749106588
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2216,7 +2224,7 @@ Rigidbody:
   serializedVersion: 4
   m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0.15
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -2268,7 +2276,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 473732, guid: 147f183af15640289aa7154f0ea2de5c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.7400002
+      value: 0.83100015
       objectReference: {fileID: 0}
     - target: {fileID: 473732, guid: 147f183af15640289aa7154f0ea2de5c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2333,7 +2341,7 @@ Rigidbody:
   serializedVersion: 4
   m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0.15
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -2366,11 +2374,11 @@ BoxCollider:
     m_Bits: 0
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
-  m_ProvidesContacts: 0
+  m_ProvidesContacts: 1
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.48480415, y: 0.076673694, z: 0.30349922}
-  m_Center: {x: -0.0000009536743, y: 0.03833681, z: 0}
+  m_Size: {x: 0.48480415, y: 0.11267555, z: 0.30349922}
+  m_Center: {x: -0.0000009536743, y: 0.056337737, z: 0}
 --- !u!1001 &3633803567661972928
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2389,7 +2397,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 452992, guid: a9c924e80c494a0187ef4b735a3c46b8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.73999774
+      value: 0.8309977
       objectReference: {fileID: 0}
     - target: {fileID: 452992, guid: a9c924e80c494a0187ef4b735a3c46b8, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2449,7 +2457,7 @@ Rigidbody:
   serializedVersion: 4
   m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0.15
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -2482,7 +2490,7 @@ BoxCollider:
     m_Bits: 0
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
-  m_ProvidesContacts: 0
+  m_ProvidesContacts: 1
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 0.30320334, y: 0.34664273, z: 0.30320358}
@@ -2510,7 +2518,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 487878, guid: 4efba74564624dfea3803661732fd71c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.739998
+      value: 0.83099794
       objectReference: {fileID: 0}
     - target: {fileID: 487878, guid: 4efba74564624dfea3803661732fd71c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2576,7 +2584,7 @@ BoxCollider:
     m_Bits: 0
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
-  m_ProvidesContacts: 0
+  m_ProvidesContacts: 1
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 0.22030592, y: 0.2898959, z: 0.1832838}
@@ -2591,7 +2599,7 @@ Rigidbody:
   serializedVersion: 4
   m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0.15
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -2627,15 +2635,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 427188, guid: ec9920e44a9241b0bed559c0b9d90d5c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.346227
+      value: 0.405
       objectReference: {fileID: 0}
     - target: {fileID: 427188, guid: ec9920e44a9241b0bed559c0b9d90d5c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.785
+      value: 1.033
       objectReference: {fileID: 0}
     - target: {fileID: 427188, guid: ec9920e44a9241b0bed559c0b9d90d5c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.44906402
+      value: 0.543
       objectReference: {fileID: 0}
     - target: {fileID: 427188, guid: ec9920e44a9241b0bed559c0b9d90d5c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2691,7 +2699,7 @@ Rigidbody:
   serializedVersion: 4
   m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0.15
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -2724,11 +2732,11 @@ BoxCollider:
     m_Bits: 0
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
-  m_ProvidesContacts: 0
+  m_ProvidesContacts: 1
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.21537207, y: 0.000000035157427, z: 0.27747056}
-  m_Center: {x: 0, y: 0.0022017737, z: 0.00000047683713}
+  m_Size: {x: 0.21537319, y: 0.03642249, z: 0.27747056}
+  m_Center: {x: -2.3447146e-14, y: 0.008272171, z: 0.00000047683713}
 --- !u!4 &5432194448806421980 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 427188, guid: ec9920e44a9241b0bed559c0b9d90d5c, type: 3}
@@ -2742,13 +2750,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 630755612162084518}
     m_Modifications:
+    - target: {fileID: -331224250821281505, guid: e2dfe2a091b1f8147ba9a1c89ca92c3e, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0.15
+      objectReference: {fileID: 0}
     - target: {fileID: 4150269380847872293, guid: e2dfe2a091b1f8147ba9a1c89ca92c3e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.526
       objectReference: {fileID: 0}
     - target: {fileID: 4150269380847872293, guid: e2dfe2a091b1f8147ba9a1c89ca92c3e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.768
+      value: 0.886
       objectReference: {fileID: 0}
     - target: {fileID: 4150269380847872293, guid: e2dfe2a091b1f8147ba9a1c89ca92c3e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2814,7 +2826,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 412500, guid: 747dab04a1084dd1805bd446e606e5a4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.74000025
+      value: 0.8310002
       objectReference: {fileID: 0}
     - target: {fileID: 412500, guid: 747dab04a1084dd1805bd446e606e5a4, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2880,7 +2892,7 @@ BoxCollider:
     m_Bits: 0
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
-  m_ProvidesContacts: 0
+  m_ProvidesContacts: 1
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 0.19010067, y: 0.3060147, z: 0.0894289}
@@ -2895,7 +2907,7 @@ Rigidbody:
   serializedVersion: 4
   m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0.15
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -2935,7 +2947,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 487564, guid: fd69dd2a121e4509a1e7ed3ab107ba7b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.73999786
+      value: 0.8309978
       objectReference: {fileID: 0}
     - target: {fileID: 487564, guid: fd69dd2a121e4509a1e7ed3ab107ba7b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2995,7 +3007,7 @@ Rigidbody:
   serializedVersion: 4
   m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0.15
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -3028,7 +3040,7 @@ BoxCollider:
     m_Bits: 0
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
-  m_ProvidesContacts: 0
+  m_ProvidesContacts: 1
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 0.30729294, y: 0.3534783, z: 0.2767582}
@@ -3052,15 +3064,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 453092, guid: 86e6f19df467456c98668b86a7963358, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.577
+      value: -0.599
       objectReference: {fileID: 0}
     - target: {fileID: 453092, guid: 86e6f19df467456c98668b86a7963358, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.7400003
+      value: 0.83100027
       objectReference: {fileID: 0}
     - target: {fileID: 453092, guid: 86e6f19df467456c98668b86a7963358, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.331
+      value: 0.407
       objectReference: {fileID: 0}
     - target: {fileID: 453092, guid: 86e6f19df467456c98668b86a7963358, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3116,7 +3128,7 @@ Rigidbody:
   serializedVersion: 4
   m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0.15
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -3149,11 +3161,11 @@ BoxCollider:
     m_Bits: 0
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
-  m_ProvidesContacts: 0
+  m_ProvidesContacts: 1
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.4245873, y: 0.16127992, z: 0.4810086}
-  m_Center: {x: -0.027687076, y: 0.08063993, z: -0.0637827}
+  m_Size: {x: 0.30209693, y: 0.16127992, z: 0.36091235}
+  m_Center: {x: -0.021135643, y: 0.08063993, z: -0.017659292}
 --- !u!4 &5925898791796856513 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 453092, guid: 86e6f19df467456c98668b86a7963358, type: 3}
@@ -3177,7 +3189,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 421558, guid: 710caedd8bff451d82b2ab398533e070, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.73999774
+      value: 0.836
       objectReference: {fileID: 0}
     - target: {fileID: 421558, guid: 710caedd8bff451d82b2ab398533e070, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3243,7 +3255,7 @@ BoxCollider:
     m_Bits: 0
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
-  m_ProvidesContacts: 0
+  m_ProvidesContacts: 1
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 0.498106, y: 0.44254023, z: 0.1852274}
@@ -3258,7 +3270,7 @@ Rigidbody:
   serializedVersion: 4
   m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0.15
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -3298,7 +3310,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 471450, guid: 845c09bb5de54859a6c48651aa011c28, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.73999816
+      value: 0.84699994
       objectReference: {fileID: 0}
     - target: {fileID: 471450, guid: 845c09bb5de54859a6c48651aa011c28, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3358,7 +3370,7 @@ Rigidbody:
   serializedVersion: 4
   m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0.15
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -3391,11 +3403,11 @@ BoxCollider:
     m_Bits: 0
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
-  m_ProvidesContacts: 0
+  m_ProvidesContacts: 1
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.21905613, y: 0.00000003562309, z: 0.2774706}
-  m_Center: {x: -0.00000047683716, y: 0.0022017588, z: 0.00000047683716}
+  m_Size: {x: 0.21905613, y: 0.033994846, z: 0.2774706}
+  m_Center: {x: -0.00000047683716, y: 0.019199166, z: 0.00000047683716}
 --- !u!4 &8036354731327882098 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 471450, guid: 845c09bb5de54859a6c48651aa011c28, type: 3}

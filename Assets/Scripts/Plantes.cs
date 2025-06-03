@@ -15,12 +15,14 @@ public class Plantes : MonoBehaviour
     {
         initialVector = plantes[0].transform.localScale;
         sceneController = FindAnyObjectByType<SceneController>();
+        updateStatus(sceneController.solvedTubes,sceneController.isUndergroundPuzzleSolved);
+        Debug.Log("nb tubes="+sceneController.solvedTubes+" isSolved="+sceneController.isUndergroundPuzzleSolved);
     }
 
     // Update is called once per frame
     void Update()
     {
-        updateStatus(sceneController.solvedTubes, sceneController.isUndergroundPuzzleSolved);
+        
     }
 
     private void setFernScale(int scale)
@@ -36,7 +38,7 @@ public class Plantes : MonoBehaviour
     {
         foreach (GameObject item in plantes)
         {
-            Instantiate(collectible, item.transform.position, Quaternion.Euler(0, 0, 0));
+            Instantiate(collectible, item.transform.position, Quaternion.identity);
         }
     }
 

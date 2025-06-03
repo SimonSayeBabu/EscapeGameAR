@@ -1,52 +1,59 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Valve : MonoBehaviour, Interactible
 {
     public EnigmeValve enigmeValve;
-    private int isOpen = 0;
-    private bool cooldown = false;
-    private int rotation = 0;
-    public int nValve;
+    public int nValve; 
 
-    // Start is called before the first frame update
+    private int isOpen = 0;
+    private bool isAnimating = false;
+    private Coroutine currentAnimation;
+
     void Start()
     {
-        /* Si il faut set les valves quand on re-entre dans une scene
-        if (enigmeValve.amIOpen(nValve))
+        if (enigmeValve.IsValveOpen(nValve))
         {
             isOpen = 1;
-            gameObject.transform.Rotate(0, 0, 45);
+            transform.rotation = Quaternion.Euler(0, -45f, 0);
         }
-        */
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    void ResetCooldown(){
-        cooldown = false;
     }
 
     public void Interact(Inventory playerInventory)
     {
-        if ((isOpen == 1 | !(enigmeValve.isOpen())) && cooldown == false)
+        if ((isOpen == 1 || enigmeValve.CanOpenAnotherValve()) && !isAnimating)
         {
-            Invoke("ResetCooldown", 0.5f);
-            cooldown = true;
             isOpen = (isOpen + 1) % 2;
-            if (isOpen == 0) rotation = 45; else rotation = -45;
-            transform.RotateAround(transform.position, transform.up, rotation);
-        }
-        enigmeValve.setValve(isOpen, nValve);
-    }
-        
 
-    public void LongInteract(Inventory playerInventory)
-    {
+            if (currentAnimation != null)
+                StopCoroutine(currentAnimation);
+
+            currentAnimation = StartCoroutine(AnimateValve(isOpen == 1));
+            enigmeValve.SetValve(isOpen, nValve);
+        }
     }
+
+    private IEnumerator AnimateValve(bool opening)
+    {
+        isAnimating = true;
+
+        float duration = 0.5f;
+        float elapsed = 0f;
+        float angle = opening ? -45f : 45f;
+        Quaternion startRot = transform.rotation;
+        Quaternion targetRot = startRot * Quaternion.Euler(0, angle, 0);
+
+        while (elapsed < duration)
+        {
+            transform.rotation = Quaternion.Slerp(startRot, targetRot, elapsed / duration);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        transform.rotation = targetRot;
+        yield return new WaitForSeconds(0.3f);
+        isAnimating = false;
+    }
+
+    public void LongInteract(Inventory playerInventory) { }
 }

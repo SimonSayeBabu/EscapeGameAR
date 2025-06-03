@@ -105,6 +105,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   side: -1
   isLocked: 1
+  openAngle: 120
+  animationDuration: 0.5
 --- !u!54 &1679370541821743162
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -286,6 +288,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   side: 1
   isLocked: 0
+  openAngle: 120
+  animationDuration: 0.5
 --- !u!54 &9020420079836292559
 Rigidbody:
   m_ObjectHideFlags: 0

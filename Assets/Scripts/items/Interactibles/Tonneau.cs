@@ -4,34 +4,28 @@ using UnityEngine;
 
 public class Tonneau : MonoBehaviour, Interactible
 {
-
-    public EnigmeValve enigmeValve;
     public Material material;
+    private SceneController sceneController;
 
     // Start is called before the first frame update
     void Start()
     {
         material.color = new Color(0f,0f,0f,0f);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+        sceneController = FindAnyObjectByType<SceneController>();
+        if (sceneController.isUndergroundPuzzleSolved)
+        {
+            material.color = Color.green;
+        }
     }
     
     public void Interact(Inventory playerInventory)
     {
         if (playerInventory.contains(30) != -1)
         {
-            enigmeValve.setSerum(true);
             material.color = Color.green;
+            sceneController.isUndergroundPuzzleSolved = true;
         }
     }
 
-    public void LongInteract(Inventory playerInventory)
-    {
-        
-    }
-
+    public void LongInteract(Inventory playerInventory){}
 }

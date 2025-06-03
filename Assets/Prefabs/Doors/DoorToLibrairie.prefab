@@ -131,7 +131,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneID: 4
-  keyID: -1
+  keyID: 4
 --- !u!65 &817937929950989046
 BoxCollider:
   m_ObjectHideFlags: 0

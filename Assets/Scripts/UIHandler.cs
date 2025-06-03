@@ -15,6 +15,7 @@ public class UIHandler : MonoBehaviour
     public List<GameObject> ItemPanels;
     public GameObject CauldronUi;
     public List<GameObject> CauldronPanels;
+    public GameObject DoorPopUp;
     
     public GameObject BookPanel;
     public Text bookTxt;
@@ -36,6 +37,7 @@ public class UIHandler : MonoBehaviour
         InventoryPanel.SetActive(false);
         InventoryButton.SetActive(false);
         CauldronUi.SetActive(false);
+        DoorPopUp.SetActive(false);
 
         controller = FindAnyObjectByType<RaycastController>();
         prefabManager = FindAnyObjectByType<PrefabManager>();
@@ -88,29 +90,29 @@ public class UIHandler : MonoBehaviour
 
     public void UpdateInv(Inventory inventory)
     {
-        for (int i = 0; i < ItemPanels.Count; i++)
+        int displayIndex = 0;
+
+        foreach (Collectible item in inventory.content)
+        {
+            if (!item.active) continue;
+
+            if (displayIndex >= ItemPanels.Count)
+                break;
+
+            Image img = ItemPanels[displayIndex].transform.Find("Image").GetComponent<Image>();
+            img.sprite = item.icon;
+            img.enabled = true;
+
+            displayIndex++;
+        }
+
+        for (int i = displayIndex; i < ItemPanels.Count; i++)
         {
             Image img = ItemPanels[i].transform.Find("Image").GetComponent<Image>();
-
-            if (i < inventory.content.Count && i < 8)
-            {
-                Collectible item = inventory.content[i];
-                if (item.active)
-                {
-                    img.sprite = item.icon;
-                    img.enabled = true;
-                }
-                else
-                {
-                    img.enabled = false;
-                }
-            }
-            else
-            {
-                img.enabled = false;
-            }
+            img.enabled = false;
         }
     }
+
 
     public void ShowCauldron(Inventory playerInventory, Cauldron cauldron)
     {
@@ -190,4 +192,9 @@ public class UIHandler : MonoBehaviour
         BookPanel.SetActive(false);
     }
 
+    public void showDoorLocked()
+    {
+        DoorPopUp.SetActive(true);
+    }
+    
 }

@@ -1,20 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Soup : MonoBehaviour, Collectible
+public class Soup : MonoBehaviour, Interactible
 {
-    public int id { get; set; } = 31;
-    public bool active { get; set; } = true;
-    [SerializeField] private Sprite _icon;
-    public Sprite icon
-    {
-        get => _icon ?? Resources.Load<Sprite>("sprite/missing_texture");
-        set => _icon = value;
-    }
-    // Start is called before the first frame update
+    private SceneController sceneController;
+    
     void Start()
     {
+        sceneController = FindAnyObjectByType<SceneController>();
     }
 
     // Update is called once per frame
@@ -23,14 +15,13 @@ public class Soup : MonoBehaviour, Collectible
         
     }
 
-    public void Interact()
+    public void Interact(Inventory inventory)
     {
-        
+        sceneController.SwitchScenes(7);
     }
 
-    public Collectible Collect()
+    public void LongInteract(Inventory inventory)
     {
-        Destroy(gameObject);
-        return this;
+        sceneController.SwitchScenes(7);
     }
 }

@@ -31,6 +31,7 @@ public class Cauldron : MonoBehaviour, Interactible
         fumee.Stop();
         mainBulles = bulles.main;
         mainFumee = fumee.main;
+        finishRecipe(1);
     }
 
     // Update is called once per frame
@@ -42,9 +43,18 @@ public class Cauldron : MonoBehaviour, Interactible
     public void reset()
     {
         activeRecipe = -1;
-        changeColor(0);
+        currentStep = 0;
         cooldown = false;
+        bullesStatus = false;
+
+        changeColor(0);
+
+        if (fumee.isPlaying)
+        {
+            fumee.Stop();
+        }
     }
+
 
     public void addItem(int item)
     {

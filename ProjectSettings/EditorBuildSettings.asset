@@ -26,6 +26,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Underground Room.unity
     guid: b51cdb092b9caf44fb865b12d4d71c5c
+  - enabled: 1
+    path: Assets/Scenes/End Screen.unity
+    guid: cfab5a9b7d4b02c448d37cf49299ed7b
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 44a40d2b34359d1478620a2321701c72, type: 2}
     UnityEditor.XR.ARKit.ARKitSettings: {fileID: 11400000, guid: 67405f27d417cc3418747801adaba402, type: 2}
